@@ -17,6 +17,7 @@ namespace Sky
 
         [SerializeField] private Transform startingBase;
 
+        
         /// <summary>
         /// Adds a new cloud to the history. If the history is full, removes the oldest entry.
         /// Ignores duplicates if the latest cloud is the same as the new one.
