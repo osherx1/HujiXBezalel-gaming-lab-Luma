@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using UnityEngine;
 
 public class Cloud : MonoBehaviour
@@ -63,10 +63,10 @@ public class Cloud : MonoBehaviour
         {
             OnPlayerOutFromCloud();
                   }
-    }*/
+    }#1#
     /*private void OnPlayerOutFromCloud()
 {
     PlayerOutFromCloud?.Invoke(this.transform);
-}*/
+}#1#
 
-}
+}*/

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e567fbaa774acc975a936f7994e6a7, type: 3}
+  m_Name: MoonDataSo
+  m_EditorClassIdentifier: 
+  playerIcon: {fileID: 8222805513700328110, guid: e9b1f8703968a7a499497d15bff99ff3, type: 3}
+  teamType: 1

@@ -1,3 +1,4 @@
+using Sky;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +14,15 @@ namespace Player
         /// Movement speed of the player.
         /// </summary>
         [SerializeField] private float speed = 5f;
+        /*[SerializeField] */private Transform startPosition;
 
+
+        [Header("Die Animation")]
+        private SpriteRenderer _spriteRenderer;
+       [SerializeField] private float flashDuration = 1.5f;
+       [SerializeField] private float flashInterval = 0.2f;
+
+        
         /// <summary>
         /// Distance the player moves during a jump.
         /// </summary>
@@ -24,10 +33,8 @@ namespace Player
         /// </summary>
         public float jumpTime = 0.2f;
 
-        /// <summary>
-        /// Layer mask to identify what counts as ground (currently unused).
-        /// </summary>
-        [SerializeField] public LayerMask groundLayer;
+        private CloudTracker _cloudTracker;
+        
 
         // Input direction for movement
         private Vector2 _moveInput;
@@ -40,6 +47,7 @@ namespace Player
 
         // Indicates if the player is currently in a jump animation
         private bool _isJumping;
+        private bool _isOnCloud;
 
 
         /// <summary>
@@ -49,6 +57,10 @@ namespace Player
         void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _cloudTracker = new CloudTracker();
+            _cloudTracker.SetStartingBase(startPosition);
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+
         }
 
         /// <summary>
@@ -104,6 +116,34 @@ namespace Player
 
             transform.position = target;
             _isJumping = false;
+            yield return new WaitForSeconds(0.05f); 
+            if (!_isOnCloud)
+            {
+                Debug.Log("Player fell into the sky!");
+                //Die();
+            }
+            else
+            {
+                Debug.Log("Player Detect a cloud");
+            }
+        }
+
+
+
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag("Cloud"))
+            {
+                _isOnCloud = false;
+            }
+        }
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Cloud"))
+            {
+                _isOnCloud = true;
+                HandlePlayerOnCloud(other);
+            }
         }
 
         /// <summary>
@@ -114,5 +154,93 @@ namespace Player
         {
             _rb.linearVelocity = _moveInput * speed;
         }
+        
+        
+        private void HandlePlayerOnCloud(Collider2D collider)
+        {
+            Transform t = collider.transform;
+            Debug.Log("The player is on the cloud in Position " + t.position);
+            _cloudTracker.PushCloud(t);
+        }
+
+        public void SetStartingBase(Transform startingBase)
+        {
+            if (_cloudTracker != null)
+            {
+                _cloudTracker.SetStartingBase(startingBase);
+
+            }
+        }
+
+        
+        private void Die()
+        {
+            StartCoroutine(HandleDeathSequence());
+        }
+
+        private System.Collections.IEnumerator HandleDeathSequence()
+        {
+            if (_cloudTracker != null)
+            {
+                Transform t = _cloudTracker.PopLastCloud();
+
+                if (t != null)
+                {
+                    // Freeze movement
+                    _moveInput = Vector2.zero;
+                    _rb.linearVelocity = Vector2.zero;
+
+                    // Flash red for 1.5 seconds (every 0.2s toggle)
+
+                    float elapsed = 0f;
+
+                    while (elapsed < flashDuration)
+                    {
+                        if (_spriteRenderer != null)
+                        {
+                            _spriteRenderer.color = Color.red;
+                            yield return new WaitForSeconds(flashInterval / 2);
+                            _spriteRenderer.color = Color.white;
+                            yield return new WaitForSeconds(flashInterval / 2);
+                        }
+                        elapsed += flashInterval;
+                    }
+                    // Move to last cloud
+                    transform.position = t.position;
+                    Debug.Log("Player returned to " + t.position);
+                    yield break;
+                }
+
+                Debug.Log("Cloud tracker is empty");
+                yield break;
+            }
+
+            Debug.Log("Cloud tracker is null");
+        }
     }
 }
+/*
+private void Die()
+{
+
+
+    //Get last Cloud3 from Cloud3 Tracker -
+    if (_cloudTracker != null)
+    {
+        Transform t = _cloudTracker.PopLastCloud();
+        if (t != null)
+        {
+            transform.position = t.position;
+            Debug.Log("Player Change is position to "+ t.position);
+            return;
+        }
+        Debug.Log("Cloud3 tracker is Empty");
+        return;
+    }
+    Debug.Log("Cloud3 tracker is Empty");
+
+
+
+}
+*/
+
