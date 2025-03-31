@@ -85,6 +85,10 @@ namespace Sky
         {
             startingBase = baseTransform;
         }
+        public Transform GetStartingBase()
+        {
+            return startingBase;
+        }
 
         /// <summary>
         /// Returns a list of all cloud transforms in the history (from oldest to newest).

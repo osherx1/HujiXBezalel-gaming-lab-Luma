@@ -1,4 +1,5 @@
 using System.Collections;
+using Managers;
 using Sky;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -120,7 +121,40 @@ namespace Player
             Vector2 target = (Vector2)transform.position + dir * jumpDistance;
             StartCoroutine(JumpTo(target));
         }
+        IEnumerator JumpTo(Vector2 target)
+        {
+            _isJumping = true;
+            jumpingActionCollider.enabled = false;
 
+            Vector2 start = transform.position;
+            float t = 0;
+            float height = 0.3f; // שינוי קל בגובה מדומה
+
+            while (t < jumpTime)
+            {
+                float progress = t / jumpTime;
+                Vector2 horizontalPos = Vector2.Lerp(start, target, progress);
+
+                // מוסיפים מעט קפיצה ויזואלית בציר Z או Y לפי סגנון
+                float zBump = Mathf.Sin(Mathf.PI * progress) * height;
+
+                transform.position = new Vector3(horizontalPos.x, horizontalPos.y + zBump, transform.position.z);
+
+                t += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = target;
+            yield return new WaitForSeconds(0.05f);
+            _isJumping = false;
+            jumpingActionCollider.enabled = true;
+
+            // אפקטים ויזואליים
+            CameraShaker.Instance?.Shake(0.1f, 0.05f); // טלטול מצלמה קטן
+            // אפשר גם להוסיף סאונד פה
+        }
+
+        /*
         /// <summary>
         /// Coroutine that handles the jump movement over time.
         /// </summary>
@@ -152,8 +186,8 @@ namespace Player
             else
             {
                 Debug.Log("Player Detect a cloud");
-            }*/
-        }
+            }#1#
+        }*/
 
 
         void OnTriggerExit2D(Collider2D other)
@@ -184,11 +218,11 @@ namespace Player
 
             if(other.CompareTag("FinishLine")){
                 Debug.Log("Player get a point!");
+                //GameManager.Instance.GameOver();
+                var startingBase = _cloudTracker.GetStartingBase();
                 _cloudTracker.ClearCloudHistory();
-                transform.position = _cloudTracker.PopLastCloud().position;
-                
-                
-                
+                _cloudTracker.PushCloud(startingBase);
+                transform.position = startingBase.position;
             }
         }
 
