@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
+using Sky;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -16,30 +19,32 @@ namespace Player
         /// List of all joined players.
         /// </summary>
         private List<PlayerInput> _players;
-    
+
 
         /// <summary>
         /// List of starting positions for newly joined players.
         /// Each player is assigned a spawn point based on their order.
         /// </summary>
-
         [SerializeField] private int maxPlayer = 2;
+
         /// <summary>
         /// Reference to the PlayerInputManager component,
         /// which is responsible for handling player joining.
         /// </summary>
         private PlayerInputManager _playerInputManager;
+
         //TODO MOVE TO TEAM CLASS
-        [SerializeField] private List<Transform> startingPoints;
-        [SerializeField] private PlayerDataSo sunDataSo ;
+        //[SerializeField] private List<Transform> startingPoints;
+        [SerializeField] private PlayerDataSo sunDataSo;
         [SerializeField] private PlayerDataSo moonDataSo;
         [SerializeField] private Team sunTeam;
         [SerializeField] private Team moonTeam;
-        
+
         [SerializeField] private float startGameDelay = 2f;
         [SerializeField] private GameObject startGameObject;
         private bool _moonTeamReady;
         private bool _sunTeamReady;
+        [FormerlySerializedAs("_pointsToWin")] [SerializeField] private int pointsToWin = 3;
 
 
         /// <summary>
@@ -54,10 +59,10 @@ namespace Player
             {
                 startGameObject.SetActive(false);
             }
-            else {Debug.Log("StartGameObject is not initialized");}
-            
-            
-        
+            else
+            {
+                Debug.Log("StartGameObject is not initialized");
+            }
         }
 
         /// <summary>
@@ -67,6 +72,30 @@ namespace Player
         {
             _playerInputManager.onPlayerJoined += AddPlayer;
             Team.TeamReady += HandleTeamReady;
+            FinishLine.TeamGetPoint += AddPoint;
+        }
+
+        private void AddPoint(TeamType teamType)
+        {
+            if (teamType == TeamType.Moon)
+            {
+                moonTeam.AddPoint();
+                if (moonTeam.CurrentPoints == pointsToWin)
+                {
+                    print("sun team won!");
+                    
+                }
+            }
+
+            if (teamType == TeamType.Sun)
+            {
+                sunTeam.AddPoint();
+                if (sunTeam.CurrentPoints == pointsToWin)
+                {
+                    print("sun team won!");
+                    
+                }
+            }
         }
 
         private void HandleTeamReady(TeamType teamType)
@@ -75,6 +104,7 @@ namespace Player
             {
                 _moonTeamReady = true;
             }
+
             if (teamType == TeamType.Sun)
             {
                 _sunTeamReady = true;
@@ -85,6 +115,7 @@ namespace Player
                 StartCoroutine(StartGameWithDelay());
             }
         }
+
         private void StartTheGame()
         {
             if (startGameObject != null)
@@ -97,7 +128,7 @@ namespace Player
                 Debug.LogWarning("StartGameObject is null!");
             }
         }
-        
+
         private IEnumerator StartGameWithDelay()
         {
             Debug.Log($"Game will start in {startGameDelay} seconds...");
@@ -119,35 +150,20 @@ namespace Player
             _players.Add(obj);
 
             int index = _players.Count - 1;
-            if (index >= startingPoints.Count)
-            {
-                Debug.LogWarning("No starting point for player " + index);
-                return;
-            }
 
-            obj.transform.position = startingPoints[index].position;
-
-            var playerComponent = obj.GetComponent<PlayerComponent>();
-            SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
-            PlayerController playerController = playerComponent.GetComponent<PlayerController>();
+            //obj.transform.position = startingPoints[index].position;
             var teamType = index % 2 == 0 ? TeamType.Sun : TeamType.Moon;
-            var dataSo = teamType == TeamType.Sun ? sunDataSo : moonDataSo;
-            if (playerComponent != null)
-            {
-                playerComponent.Initialize(_players.Count, dataSo, obj, startingPoints[index],spriteRenderer,playerController);
-                playerComponent.PlaySpawnAnimation();
-            }
+            PlayerDataSo dataSo = teamType == TeamType.Sun ? sunDataSo : moonDataSo;
+
 
             if (teamType == TeamType.Sun)
             {
-                sunTeam.AddPlayer(playerComponent);
+                sunTeam.AddPlayer(obj, dataSo);
             }
             else
             {
-                moonTeam.AddPlayer(playerComponent);
+                moonTeam.AddPlayer(obj, dataSo);
             }
-
-            Debug.Log($"Player {teamType} spawned at {startingPoints[index].position}");
         }
     }
 }

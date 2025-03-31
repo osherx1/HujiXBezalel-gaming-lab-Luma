@@ -1,32 +1,57 @@
 using System;
 using System.Collections.Generic;
-using Player;
+using Enums;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
-[Serializable] public class Team
+namespace Player
 {
-    [SerializeField] private TeamType TeamType;
-    [SerializeField] private int currentPoints { get; set; }
-    [SerializeField] private List<PlayerComponent> Players;
-    [SerializeField]  private int maxPlayer = 1;
-    public static event Action<TeamType> TeamReady;
-
-    public void AddPlayer(PlayerComponent player)
+    [Serializable] public class Team
     {
-        if (!Players.Contains(player))
+        [FormerlySerializedAs("TeamType")] [SerializeField] private TeamType teamType;
+        public int CurrentPoints;
+        [SerializeField] private List<PlayerComponent> Players = new();
+        [SerializeField] private int maxPlayer = 1;
+        [SerializeField] private List<Transform> startingBases;
+
+        public static event Action<TeamType> TeamReady;
+
+        public void AddPlayer(PlayerInput obj, PlayerDataSo dataSo)
         {
-            Players.Add(player);
-            Debug.Log($"Player added to team {TeamType}. Total players: {Players.Count}");
+            var playerComponent = obj.GetComponent<PlayerComponent>();
+
+            if (playerComponent != null&&!Players.Contains(playerComponent))
+            {
+                Players.Add(playerComponent);
+                var index = Players.Count - 1;
+                var spriteRenderer = obj.GetComponent<SpriteRenderer>();
+                var playerController = playerComponent.GetComponent<PlayerController>();
+                if (index < startingBases.Count)
+                {
+                    playerComponent.Initialize(index, dataSo, obj,startingBases[index],spriteRenderer,playerController);
+
+                }
+                
+                Debug.Log($"Player added to team {teamType}. Total players: {Players.Count}");
+            }
+
+            if (Players.Count == maxPlayer)
+            {
+                TeamReady?.Invoke(teamType);
+            }
+            playerComponent.PlaySpawnAnimation();
         }
 
-        if (Players.Count == maxPlayer)
+    
+        public void AddPoint()
         {
-            TeamReady?.Invoke(TeamType);
+            CurrentPoints++;
         }
-    }
-
-    public void AddPoint()
-    {
-        currentPoints++;
     }
 }
+
+
+  
+
+         

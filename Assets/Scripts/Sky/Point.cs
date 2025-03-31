@@ -1,7 +1,10 @@
 ﻿using System;
+using Enums;
+using Player;
 using UnityEngine;
 public class Point:MonoBehaviour
 {
+
     //adding animation.
     [SerializeField] private int state = 1;
 

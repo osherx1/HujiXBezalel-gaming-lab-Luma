@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Player
+namespace Enums
 {
     [Serializable]
     public enum TeamType

@@ -8,8 +8,7 @@ namespace Player
     [Serializable] public class PlayerComponent : MonoBehaviour
     {
         private PlayerInput _playerInput;
-        [SerializeField] public PlayerDataSo Data { get; set; }
-
+        public PlayerDataSo Data { get; set; }
         private int _playerNumber;
         private PlayerController _playerController;
         private SpriteRenderer _spriteRenderer; 
@@ -32,7 +31,11 @@ namespace Player
             _playerInput = playerInput;
             _playerController = playerController; 
             _spriteRenderer = spriteRenderer;
-            if (_playerController != null) _playerController.SetStartingBase(startPosition);
+            if (_playerController != null)
+            {
+                _playerController.SetStartingBase(startPosition);
+                transform.position = startPosition.position;
+            }
             if (Data != null) Debug.Log($"Initialized player as {Data.TeamType}.");
             if (_spriteRenderer != null && Data.PlayerIcon != null)
             {
@@ -40,6 +43,14 @@ namespace Player
                 _spriteRenderer.sprite = Data.PlayerIcon;
             }
             
+        }
+
+        public void SetBasePosition(Transform startPosition)
+        {
+            /*
+            transform.position = startPosition.position;
+            */
+            _playerController.SetStartingBase(startPosition);
         }
 
         private PlayerInput PlayerInput

@@ -61,7 +61,7 @@ namespace Managers
         /// Plays a sound effect based on the audio type defined in the GameSoundsSO.
         /// </summary>
         /// <param name="audioType">The type of sound to play.</param>
-        public void PlaySoundByAudioType(Data.GameSoundsSo.AudioType audioType)
+        public void PlaySoundByAudioType(Enums.AudioType audioType)
         {
             AudioClip clip = gameSoundsSo.GetClip(audioType);
             if (clip != null)

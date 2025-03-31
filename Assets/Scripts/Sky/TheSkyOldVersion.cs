@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Sky
 {
-    public class TheSky:MonoBehaviour
+    public class TheSkyOldVersion:MonoBehaviour
     {
     
         [SerializeField] private GameObject skyObject;
