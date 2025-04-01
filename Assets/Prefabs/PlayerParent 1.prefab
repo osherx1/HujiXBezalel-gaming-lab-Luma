@@ -1,74 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &523604906078770632
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5080011449064873206}
-  - component: {fileID: 5958269693549186428}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5080011449064873206
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523604906078770632}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3224731714102417763}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &5958269693549186428
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523604906078770632}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.027336676, y: 0}
-  m_Size: {x: 1.3638387, y: 1.48412}
-  m_Direction: 0
 --- !u!1 &6188368867935850322
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,13 +113,13 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8460005843680574437, guid: 621e3f146741ec949b7d5b2cdaea9e9b, type: 3}
-      propertyPath: _collider
-      value: 
-      objectReference: {fileID: 5958269693549186428}
-    - target: {fileID: 8460005843680574437, guid: 621e3f146741ec949b7d5b2cdaea9e9b, type: 3}
       propertyPath: jumpDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8460005843680574437, guid: 621e3f146741ec949b7d5b2cdaea9e9b, type: 3}
+      propertyPath: playerAttack
+      value: 
+      objectReference: {fileID: 5065745982602410303}
     - target: {fileID: 8460005843680574437, guid: 621e3f146741ec949b7d5b2cdaea9e9b, type: 3}
       propertyPath: playerParent
       value: 
@@ -201,20 +132,16 @@ PrefabInstance:
       propertyPath: groundLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
-    - target: {fileID: 8460005843680574437, guid: 621e3f146741ec949b7d5b2cdaea9e9b, type: 3}
-      propertyPath: jumpingActionCollider
-      value: 
-      objectReference: {fileID: 5958269693549186428}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6621936044448643786, guid: 621e3f146741ec949b7d5b2cdaea9e9b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5080011449064873206}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 541135032893517789, guid: 621e3f146741ec949b7d5b2cdaea9e9b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3442027031827529713}
+    - targetCorrespondingSourceObject: {fileID: 541135032893517789, guid: 621e3f146741ec949b7d5b2cdaea9e9b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5065745982602410303}
   m_SourcePrefab: {fileID: 100100000, guid: 621e3f146741ec949b7d5b2cdaea9e9b, type: 3}
 --- !u!4 &3224731714102417763 stripped
 Transform:
@@ -238,3 +165,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ebbbac366c44bbbc0430ae74a9525c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5065745982602410303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8117497148449655924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5df1ae0537446286c73b6b2fc39895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider2D: {fileID: 0}

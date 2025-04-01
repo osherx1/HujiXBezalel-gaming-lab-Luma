@@ -24,6 +24,7 @@ namespace Player
         [Header("Die Animation")] private SpriteRenderer _spriteRenderer;
         [SerializeField] private float flashDuration = 1f;
         [SerializeField] private float flashInterval = 0.2f;
+        [SerializeField] private PlayerAttack playerAttack;
 
 
         [FormerlySerializedAs("_playerParent")] [SerializeField] private Transform playerParent;
@@ -97,6 +98,11 @@ namespace Player
         {
             _moveInput = value.Get<Vector2>();
             _directionToMove = _moveInput;
+        }
+
+        public void OnAttack(InputValue value)
+        {
+            playerAttack.Attack();
         }
 
         /// <summary>
