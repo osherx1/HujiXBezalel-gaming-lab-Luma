@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Managers;
 using Sky;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +25,7 @@ namespace Player
         [Header("Die Animation")] private SpriteRenderer _spriteRenderer;
         [SerializeField] private float flashDuration = 1f;
         [SerializeField] private float flashInterval = 0.2f;
+        [SerializeField] private PlayerAttack playerAttack;
 
 
         [FormerlySerializedAs("_playerParent")] [SerializeField] private Transform playerParent;
@@ -98,6 +101,11 @@ namespace Player
             _directionToMove = _moveInput;
         }
 
+        public void OnAttack(InputValue value)
+        {
+            playerAttack.Attack();
+        }
+
         /// <summary>
         /// Input callback for jump.
         /// Initiates a jump in the direction the player is moving.
@@ -120,7 +128,40 @@ namespace Player
             Vector2 target = (Vector2)transform.position + dir * jumpDistance;
             StartCoroutine(JumpTo(target));
         }
+        IEnumerator JumpTo(Vector2 target)
+        {
+            _isJumping = true;
+            jumpingActionCollider.enabled = false;
 
+            Vector2 start = transform.position;
+            float t = 0;
+            float height = 0.3f; // שינוי קל בגובה מדומה
+
+            while (t < jumpTime)
+            {
+                float progress = t / jumpTime;
+                Vector2 horizontalPos = Vector2.Lerp(start, target, progress);
+
+                // מוסיפים מעט קפיצה ויזואלית בציר Z או Y לפי סגנון
+                float zBump = Mathf.Sin(Mathf.PI * progress) * height;
+
+                transform.position = new Vector3(horizontalPos.x, horizontalPos.y + zBump, transform.position.z);
+
+                t += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = target;
+            yield return new WaitForSeconds(0.05f);
+            _isJumping = false;
+            jumpingActionCollider.enabled = true;
+
+            // אפקטים ויזואליים
+            CameraShaker.Instance?.Shake(0.1f, 0.05f); // טלטול מצלמה קטן
+            // אפשר גם להוסיף סאונד פה
+        }
+
+        /*
         /// <summary>
         /// Coroutine that handles the jump movement over time.
         /// </summary>
@@ -152,8 +193,8 @@ namespace Player
             else
             {
                 Debug.Log("Player Detect a cloud");
-            }*/
-        }
+            }#1#
+        }*/
 
 
         void OnTriggerExit2D(Collider2D other)
@@ -184,12 +225,29 @@ namespace Player
 
             if(other.CompareTag("FinishLine")){
                 Debug.Log("Player get a point!");
-                _cloudTracker.ClearCloudHistory();
-                transform.position = _cloudTracker.PopLastCloud().position;
-                
-                
-                
+                //GameManager.Instance.GameOver();
+                ResetPlayer();
             }
+        }
+
+        private void ResetPlayer()
+        {
+            if (_cloudTracker != null)
+            {
+                var startingBase = _cloudTracker.GetStartingBase();
+                if (startingBase != null)
+                {
+                    _isDie = false;
+                    transform.position = startingBase.position;
+                    _cloudTracker.ClearCloudHistory();
+                    _isJumping = false;
+                    _isOnCloud = true;
+                    jumpingActionCollider.enabled = true;
+                }
+            }
+      
+
+            
         }
 
         /// <summary>
