@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 namespace Sky
@@ -96,24 +97,24 @@ namespace Sky
                     var cloud1 = Instantiate(cloudsPrefabs[0], _startPositionsPlayer1[i], Quaternion.identity);
                     _player1Clouds.Add(cloud1); 
                     cloud1.SetColor(randomColorType); // Set random colorType for cloud1
-                    cloud1.SetTeamType(1);
+                    cloud1.SetTeamType(TeamType.Sun);
                     
                     var cloud2 = Instantiate(cloudsPrefabs[0], _startPositionsPlayer2[i], Quaternion.identity);
                     _player2Clouds.Add(cloud2);
                     cloud2.SetColor(randomColorType); // Set random colorType for cloud2
-                    cloud1.SetTeamType(2);
+                    cloud1.SetTeamType(TeamType.Moon);
                 }
                 if ((i >= 3 && i < 8) || (i >= 11 && i < 16))
                 {
                     var cloud1 = Instantiate(cloudsPrefabs[1], _startPositionsPlayer1[i], Quaternion.identity);
                     _player1Clouds.Add(cloud1); 
                     cloud1.SetColor(randomColorType);
-                    cloud1.SetTeamType(1);
+                    cloud1.SetTeamType(TeamType.Sun);
 
                     var cloud2 = Instantiate(cloudsPrefabs[1], _startPositionsPlayer2[i], Quaternion.identity);
                     _player2Clouds.Add(cloud2);
                     cloud2.SetColor(randomColorType);
-                    cloud1.SetTeamType(2);
+                    cloud1.SetTeamType(TeamType.Moon);
                 }
 
                 if (i > 7 && i < 11)
@@ -121,12 +122,12 @@ namespace Sky
                     var cloud1 = Instantiate(cloudsPrefabs[2], _startPositionsPlayer1[i], Quaternion.identity);
                     _player1Clouds.Add(cloud1);
                     cloud1.SetColor(randomColorType);
-                    cloud1.SetTeamType(1);
+                    cloud1.SetTeamType(TeamType.Sun);
 
                     var cloud2 = Instantiate(cloudsPrefabs[2], _startPositionsPlayer2[i], Quaternion.identity);
                     _player2Clouds.Add(cloud2);
                     cloud2.SetColor(randomColorType);
-                    cloud1.SetTeamType(2);
+                    cloud1.SetTeamType(TeamType.Moon);
                 }
             }
         }
@@ -146,7 +147,7 @@ namespace Sky
                 Trigger newTrigger = Instantiate(triggersPrefabs);
                 newTrigger.SetupCloud(selectedCloud.gameObject.transform);
                 newTrigger.SetColor(colors[i]);
-                newTrigger.SetupTeam(2);
+                newTrigger.SetupTeam(TeamType.Moon);
                 // Link the trigger to a random selection of 4 clouds from Player 2
                 GetRandomClouds(_player2Clouds, 4, random,colors[i]);
             }
@@ -163,7 +164,8 @@ namespace Sky
                 Trigger newTrigger = Instantiate(triggersPrefabs);
                 newTrigger.SetupCloud(selectedCloud.gameObject.transform);
                 newTrigger.SetColor(colors[i]);
-                newTrigger.SetupTeam(1);
+                newTrigger.SetupTeam(TeamType.Sun);
+                ;
                 // Link the trigger to a random selection of 4 clouds from Player 2
                 GetRandomClouds(_player1Clouds, 4, random,colors[i]);
             }
