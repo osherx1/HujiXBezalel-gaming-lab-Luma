@@ -67,6 +67,8 @@ namespace Sky
         public void ClearCloudHistory()
         {
             _cloudHistory.Clear();
+            PushCloud(startingBase);
+
         }
 
         /// <summary>
