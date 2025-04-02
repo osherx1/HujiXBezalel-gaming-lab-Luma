@@ -129,6 +129,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9040623523873905343, guid: 8d4f7230b0c79c34ea3ac929e4e8529f, type: 3}
   m_PrefabInstance: {fileID: 888809971}
   m_PrefabAsset: {fileID: 0}
+--- !u!70 &189182568 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3440167099123401682, guid: 8022d9c8c3e273342a74e8832a383e24, type: 3}
+  m_PrefabInstance: {fileID: 1233115847365689489}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &351436934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2248,6 +2253,10 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: -0.045211315
       objectReference: {fileID: 0}
+    - target: {fileID: 4025059574734026603, guid: 8022d9c8c3e273342a74e8832a383e24, type: 3}
+      propertyPath: attackCollider
+      value: 
+      objectReference: {fileID: 189182568}
     - target: {fileID: 4959984742600805879, guid: 8022d9c8c3e273342a74e8832a383e24, type: 3}
       propertyPath: m_TagString
       value: Untagged

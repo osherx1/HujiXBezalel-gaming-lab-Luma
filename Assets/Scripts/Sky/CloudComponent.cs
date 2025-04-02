@@ -119,26 +119,25 @@ namespace Sky
     
         private void OnEnable()
         {
-            if (_inTrigger)
-            {
-                Trigger.Vanish += VanishCloud;
+            Debug.Log("Registered to Vanish event");
+            Trigger.Vanish += VanishCloud;
 
-            }
+            
         }
 
         private void OnDisable()
         {
-            if (_inTrigger)
-            {
-                Trigger.Vanish -= VanishCloud;
-
-            }
+            Debug.Log("UnRegistered to Vanish event");
+            Trigger.Vanish -= VanishCloud;
+                
         }
 
         public void VanishCloud(ColorType colorType,TeamType teamType)
         {
+            Debug.Log("team type" + teamType+" and color type:" + colorType);
             if ((this.teamType != teamType)&& (color == colorType))
             {
+                Debug.Log("entered vanish");
                 StartCoroutine(VanishAndReappear());
             }
         }

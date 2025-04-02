@@ -9,6 +9,11 @@ namespace Player
         [SerializeField] private Collider2D attackCollider;
         [SerializeField] private float attackDuration = 0.2f;
 
+        public float Getattack()
+        {
+            return attackDuration;
+        }
+
         public void Attack()
         {
             Debug.Log("Using attack");
@@ -26,11 +31,15 @@ namespace Player
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            var trigger = other.GetComponent<Sky.Trigger>();
-            if (trigger != null)
+            if (other.CompareTag("Button"))
             {
-                trigger.ActivateTrigger();
+                var trigger = other.GetComponent<Sky.Trigger>();
+                if (trigger != null)
+                {
+                    trigger.ActivateTrigger();
+                }
             }
+   
         }
 
 

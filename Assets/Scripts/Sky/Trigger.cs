@@ -60,11 +60,13 @@ namespace Sky
         
         public void ActivateTrigger()
         {
-            Debug.Log("Trigger activated");
-            if (state == 0) return;
+            
+            //if (state == 0) return;
 
             state = 0;
+            Debug.Log("Trigger activated");
             Vanish?.Invoke(triggerdColorType, teamType);
+            Debug.Log("Vanish Invoked");
             StartCoroutine(ResetStateAfterDelay(vanishCooldown));
         }
 

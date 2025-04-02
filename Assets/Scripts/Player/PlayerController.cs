@@ -54,6 +54,7 @@ namespace Player
         // Indicates if the player is currently in a jump animation
         private bool _isJumping;
         private bool _isDie;
+        private bool _isattack;
         private bool _isOnCloud = true;
         [FormerlySerializedAs("_collider")] [SerializeField] private Collider2D jumpingActionCollider;
         private Vector3 _startPosition;
@@ -99,7 +100,9 @@ namespace Player
 
         public void OnAttack(InputValue value)
         {
+            _isattack = true;
             playerAttack.Attack();
+            _isattack = false;
         }
 
         /// <summary>
@@ -195,7 +198,7 @@ namespace Player
 
         void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Cloud"))
+            if (other.CompareTag("Cloud") && !_isattack)
             {
                     //transform.SetParent(playerParent, true);
                     _isOnCloud = false;

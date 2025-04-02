@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6593cc68b7d4b7ab298aeb7c01783ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  state: 1
   vanishCooldown: 5
   triggerdColorType: 0
   teamType: 0
