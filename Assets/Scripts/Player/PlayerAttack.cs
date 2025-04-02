@@ -8,6 +8,8 @@ namespace Player
     {
         [SerializeField] private Collider2D attackCollider;
         [SerializeField] private float attackDuration = 0.2f;
+        [SerializeField] private PlayerController playerController;
+
 
         public float Getattack()
         {
@@ -23,10 +25,15 @@ namespace Player
 
         private IEnumerator PerformAttack()
         {
+            playerController.SetIsAttacking(true);
+            yield return new WaitForSeconds(0.05f);
             attackCollider.enabled = true;
             Debug.Log("Enable collider");
             yield return new WaitForSeconds(attackDuration);
             attackCollider.enabled = false;
+            yield return new WaitForSeconds(0.05f);
+            playerController.SetIsAttacking(false);
+
         }
         
         private void OnTriggerEnter2D(Collider2D other)
@@ -39,7 +46,6 @@ namespace Player
                     trigger.ActivateTrigger();
                 }
             }
-   
         }
 
 

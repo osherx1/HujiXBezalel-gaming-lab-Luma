@@ -10,7 +10,9 @@ namespace Player
     [Serializable]public class Team
     {
         [FormerlySerializedAs("TeamType")] [SerializeField] private TeamType teamType;
-        [FormerlySerializedAs("CurrentPoints")] public int currentPoints;
+
+        [FormerlySerializedAs("CurrentPoints")]
+        [SerializeField] private int currentPoints = 0;
         [FormerlySerializedAs("_players")] [SerializeField]private List<PlayerComponent> players = new();
         [SerializeField] private int maxPlayer = 1;
         [SerializeField] private List<Transform> startingBases = new();
@@ -47,11 +49,16 @@ namespace Player
             }
             playerComponent.PlaySpawnAnimation();
         }
-        
+
+        public int GetPoint()
+        {
+            return currentPoints;
+        }
 
     
         public void AddPoint()
         {
+            Debug.Log("Team "+teamType +" get point");
             currentPoints++;
         }
     }

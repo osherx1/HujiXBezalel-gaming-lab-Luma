@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Enums;
 using Sky;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -58,6 +60,8 @@ namespace Player
         private bool _isOnCloud = true;
         [FormerlySerializedAs("_collider")] [SerializeField] private Collider2D jumpingActionCollider;
         private Vector3 _startPosition;
+        [SerializeField] private PlayerComponent _playerComponent;
+
         /// <summary>
         /// Called when the object is initialized.
         /// Grabs a reference to the Rigidbody2D component.
@@ -209,6 +213,7 @@ namespace Player
                 }*/
             
         }
+        public static event Action<TeamType> TeamGetPoint;
 
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -224,16 +229,20 @@ namespace Player
 
             if(other.CompareTag("FinishLine")){
                 Debug.Log("Player get a point!");
+                TeamGetPoint?.Invoke(_playerComponent.Data.TeamType);
                 //GameManager.Instance.GameOver();
                 ResetPlayer();
             }
         }
+      
+
+        
 
         private void ResetPlayer()
         {
                 
                 if (_startPosition != null)
-                {
+                {      
                     transform.position = _startPosition;
                     _isOnCloud = true;
                     _isJumping = false;
@@ -405,7 +414,11 @@ namespace Player
         */
 
 
-
+        public void SetIsAttacking(bool isAttacking)
+        {
+            _isattack = isAttacking;
+        }
+   
     }
 }
 /*

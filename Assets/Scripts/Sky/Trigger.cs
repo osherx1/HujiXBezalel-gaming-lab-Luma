@@ -12,7 +12,7 @@ namespace Sky
      
         // the associatedClouds why public?
         [SerializeField] private int state = 1;
-        [SerializeField] private float vanishCooldown = 5f;
+        [SerializeField] private float vanishCooldown = 2f;
 
         [FormerlySerializedAs("triggerdColor")] [SerializeField] private ColorType triggerdColorType;
         // [SerializeField] public CloudComponent[] associatedClouds;
@@ -42,14 +42,14 @@ namespace Sky
             }
         }
     
-        private void OnTriggerEnter2D(Collider2D other)
+        /*private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
                 Debug.Log("Trigger entered by player");
                 ActivateTrigger();
             }
-        }
+        }*/
 
     
         private IEnumerator ResetStateAfterDelay(float delay)

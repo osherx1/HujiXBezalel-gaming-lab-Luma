@@ -72,7 +72,7 @@ namespace Player
         {
             _playerInputManager.onPlayerJoined += AddPlayer;
             Team.TeamReady += HandleTeamReady;
-            FinishLine.TeamGetPoint += AddPoint;
+            PlayerController.TeamGetPoint += AddPoint;
         }
 
         private void AddPoint(TeamType teamType)
@@ -80,7 +80,7 @@ namespace Player
             if (teamType == TeamType.Moon)
             {
                 moonTeam.AddPoint();
-                if (moonTeam.currentPoints == pointsToWin)
+                if (moonTeam.GetPoint()== pointsToWin)
                 {
                     print("sun team won!");
                     
@@ -90,7 +90,7 @@ namespace Player
             if (teamType == TeamType.Sun)
             {
                 sunTeam.AddPoint();
-                if (sunTeam.currentPoints == pointsToWin)
+                if (moonTeam.GetPoint()== pointsToWin)
                 {
                     print("sun team won!");
                     
