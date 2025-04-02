@@ -141,8 +141,36 @@ namespace Sky
                 StartCoroutine(VanishAndReappear());
             }
         }
-
+        
         private IEnumerator VanishAndReappear()
+        {
+            // Disable rendering and colliders on this object and all its children
+            SetRenderersAndCollidersEnabled(false);
+
+            // Wait for the cooldown duration
+            yield return new WaitForSeconds(vanishCooldown);
+
+            // Re-enable rendering and colliders on this object and all its children
+            SetRenderersAndCollidersEnabled(true);
+        }
+
+        private void SetRenderersAndCollidersEnabled(bool isEnabled)
+        {
+            // Enable or disable all SpriteRenderers in this object and its children
+            foreach (var renderer in GetComponentsInChildren<SpriteRenderer>())
+            {
+                renderer.enabled = isEnabled;
+            }
+
+            // Enable or disable all Collider2Ds in this object and its children
+            foreach (var collider in GetComponentsInChildren<Collider2D>())
+            {
+                collider.enabled = isEnabled;
+            }
+        }
+
+
+        /*private IEnumerator VanishAndReappear()
         {
             // Disable rendering and collision
             _spriteRenderer.enabled = false;
@@ -154,6 +182,6 @@ namespace Sky
             // Re-enable rendering and collision
             _spriteRenderer.enabled = true;
             _collider2D.enabled = true;
-        }
+        }*/
     }
 }

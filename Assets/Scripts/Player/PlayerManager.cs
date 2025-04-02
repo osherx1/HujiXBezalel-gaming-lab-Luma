@@ -20,11 +20,6 @@ namespace Player
         /// </summary>
         private List<PlayerInput> _players;
 
-
-        /// <summary>
-        /// List of starting positions for newly joined players.
-        /// Each player is assigned a spawn point based on their order.
-        /// </summary>
         [SerializeField] private int maxPlayer = 2;
 
         /// <summary>
@@ -32,6 +27,11 @@ namespace Player
         /// which is responsible for handling player joining.
         /// </summary>
         private PlayerInputManager _playerInputManager;
+
+        // Cooldown settings
+        [SerializeField] private float pointCooldown = 2f;
+        private float _lastPointTimeSun = -Mathf.Infinity;
+        private float _lastPointTimeMoon = -Mathf.Infinity;
 
         //TODO MOVE TO TEAM CLASS
         //[SerializeField] private List<Transform> startingPoints;
@@ -44,7 +44,9 @@ namespace Player
         [SerializeField] private GameObject startGameObject;
         private bool _moonTeamReady;
         private bool _sunTeamReady;
-        [FormerlySerializedAs("_pointsToWin")] [SerializeField] private int pointsToWin = 3;
+
+        [FormerlySerializedAs("_pointsToWin")] [SerializeField]
+        private int pointsToWin = 3;
 
 
         /// <summary>
@@ -75,28 +77,72 @@ namespace Player
             PlayerController.TeamGetPoint += AddPoint;
         }
 
+        /// <summary>
+        /// Unsubscribes from the player joined event when the object is disabled.
+        /// </summary>
+        private void OnDisable()
+        {
+            _playerInputManager.onPlayerJoined -= AddPlayer;
+            Team.TeamReady -= HandleTeamReady;
+            PlayerController.TeamGetPoint -= AddPoint;
+        }
+
         private void AddPoint(TeamType teamType)
         {
+            float currentTime = Time.time;
+
+            if (teamType == TeamType.Moon)
+            {
+                // Check cooldown for moon team
+                if (currentTime - _lastPointTimeMoon < pointCooldown) return;
+                _lastPointTimeMoon = currentTime;
+
+                moonTeam.AddPoint();
+                if (moonTeam.GetPoint() >= pointsToWin)
+                {
+                    Debug.Log("Moon team won!");
+                }
+            }
+
+            if (teamType == TeamType.Sun)
+            {
+                // Check cooldown for sun team
+                if (currentTime - _lastPointTimeSun < pointCooldown) return;
+                _lastPointTimeSun = currentTime;
+
+                sunTeam.AddPoint();
+                if (sunTeam.GetPoint() >= pointsToWin)
+                {
+                    Debug.Log("Sun team won!");
+                }
+            }
+        }
+
+        /*
+        private void AddPoint(TeamType teamType)
+        {
+
             if (teamType == TeamType.Moon)
             {
                 moonTeam.AddPoint();
-                if (moonTeam.GetPoint()== pointsToWin)
+                if (moonTeam.GetPoint()>= pointsToWin)
                 {
                     print("sun team won!");
-                    
+
                 }
             }
 
             if (teamType == TeamType.Sun)
             {
                 sunTeam.AddPoint();
-                if (moonTeam.GetPoint()== pointsToWin)
+                if (moonTeam.GetPoint()>= pointsToWin)
                 {
                     print("sun team won!");
-                    
+
                 }
             }
         }
+        */
 
         private void HandleTeamReady(TeamType teamType)
         {
@@ -136,14 +182,6 @@ namespace Player
             StartTheGame();
         }
 
-
-        /// <summary>
-        /// Unsubscribes from the player joined event when the object is disabled.
-        /// </summary>
-        private void OnDisable()
-        {
-            _playerInputManager.onPlayerJoined -= AddPlayer;
-        }
 
         private void AddPlayer(PlayerInput obj)
         {

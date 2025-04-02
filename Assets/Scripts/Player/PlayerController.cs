@@ -229,9 +229,9 @@ namespace Player
 
             if(other.CompareTag("FinishLine")){
                 Debug.Log("Player get a point!");
+                ResetPlayer();
                 TeamGetPoint?.Invoke(_playerComponent.Data.TeamType);
                 //GameManager.Instance.GameOver();
-                ResetPlayer();
             }
         }
       
@@ -240,16 +240,12 @@ namespace Player
 
         private void ResetPlayer()
         {
-                
-                if (_startPosition != null)
-                {      
-                    transform.position = _startPosition;
-                    _isOnCloud = true;
-                    _isJumping = false;
-                    _isDie = false;
-                    jumpingActionCollider.enabled = true;
-                    _cloudTracker.ClearCloudHistory();
-                }
+            _isOnCloud = true;
+            transform.position = _startPosition;
+            _isJumping = false;
+            _isDie = false;
+            jumpingActionCollider.enabled = true;
+            _cloudTracker.ClearCloudHistory();
         }
 
         /// <summary>

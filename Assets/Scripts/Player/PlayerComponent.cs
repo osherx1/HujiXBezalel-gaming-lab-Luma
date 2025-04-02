@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -45,11 +46,13 @@ namespace Player
             
         }
 
+        public TeamType GetTeamType()
+        {
+            return Data.TeamType;
+        }
+
         public void SetBasePosition(Transform startPosition)
         {
-            /*
-            transform.position = startPosition.position;
-            */
             _playerController.SetStartingBase(startPosition);
         }
 
