@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1955406474627598508}
   m_Layer: 0
   m_Name: Trigger
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,9 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6593cc68b7d4b7ab298aeb7c01783ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloudTransform: {fileID: 2439750995102527260, guid: 53b3be46051847d4ba94fbfb83c1d5e5, type: 3}
   state: 0
-  associatedClouds: []
+  vanishCooldown: 5
+  triggerdColorType: 0
+  teamType: 0
 --- !u!58 &-1955406474627598508
 CircleCollider2D:
   m_ObjectHideFlags: 0

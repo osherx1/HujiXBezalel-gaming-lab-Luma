@@ -63,8 +63,8 @@ namespace Sky
 
         private void Loop(MovementDirection direction)
         {
-            float screenTopLimit = 3.9f + _cloudHeight / 2;   // Add cloud height to fully disappear
-            float screenBottomLimit = -3.9f - _cloudHeight / 2; // Subtract cloud height to fully disappear
+            float screenTopLimit = 5 + _cloudHeight / 2;   // Add cloud height to fully disappear
+            float screenBottomLimit = -5 - _cloudHeight / 2; // Subtract cloud height to fully disappear
 
             if (direction == MovementDirection.Down)
             {

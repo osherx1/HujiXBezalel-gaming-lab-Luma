@@ -43,25 +43,32 @@ namespace Sky
             }
         }
     
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Player") && state != 0)
+            if (other.CompareTag("Player"))
             {
-                state = 0; // Set the state to 0 to indicate it's triggered
-        
-                // Invoke the Vanish event with the color and team type
-                Vanish?.Invoke(triggerdColorType, teamType);
-
-                // Start the coroutine to reset the state after a delay
-                StartCoroutine(ResetStateAfterDelay(vanishCooldown)); // Adjust the delay time (in seconds) as needed
+                Debug.Log("Trigger entered by player");
+                ActivateTrigger();
             }
         }
+
     
         private IEnumerator ResetStateAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay); // Wait for the specified delay time
             state = 1; // Reset the state to 1
         }
+        
+        public void ActivateTrigger()
+        {
+            Debug.Log("Trigger activated");
+            if (state == 0) return;
+
+            state = 0;
+            Vanish?.Invoke(triggerdColorType, teamType);
+            StartCoroutine(ResetStateAfterDelay(vanishCooldown));
+        }
+
 
     }
 }

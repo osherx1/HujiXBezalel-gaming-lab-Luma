@@ -1,15 +1,38 @@
-﻿using System;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Player
 {
-    [Serializable]public class PlayerAttack : MonoBehaviour
+    [System.Serializable]
+    public class PlayerAttack : MonoBehaviour
     {
-        [SerializeField] private Collider2D collider2D;
+        [SerializeField] private Collider2D attackCollider;
+        [SerializeField] private float attackDuration = 0.2f;
 
         public void Attack()
         {
+            Debug.Log("Using attack");
+            StartCoroutine(PerformAttack());
             
         }
+
+        private IEnumerator PerformAttack()
+        {
+            attackCollider.enabled = true;
+            Debug.Log("Enable collider");
+            yield return new WaitForSeconds(attackDuration);
+            attackCollider.enabled = false;
+        }
+        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var trigger = other.GetComponent<Sky.Trigger>();
+            if (trigger != null)
+            {
+                trigger.ActivateTrigger();
+            }
+        }
+
+
     }
 }

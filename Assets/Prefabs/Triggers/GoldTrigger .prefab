@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9023753328732255615}
   m_Layer: 0
   m_Name: 'GoldTrigger '
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   state: 0
   vanishCooldown: 5
   triggerdColorType: 0
+  teamType: 0
 --- !u!58 &9023753328732255615
 CircleCollider2D:
   m_ObjectHideFlags: 0
