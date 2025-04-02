@@ -12,7 +12,13 @@ namespace Player
     {
         [SerializeField] private Sprite playerIcon;
         [SerializeField] private TeamType teamType;
+        [SerializeField] private Vector3 baseTeam;
 
+        public Vector3 BaseTeam
+        {
+            get => baseTeam;
+            set => baseTeam = value;
+        }
         public TeamType TeamType
         {
             get => teamType;

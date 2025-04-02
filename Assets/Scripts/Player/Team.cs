@@ -7,13 +7,17 @@ using UnityEngine.Serialization;
 
 namespace Player
 {
-    [Serializable] public class Team
+    [Serializable]public class Team
     {
         [FormerlySerializedAs("TeamType")] [SerializeField] private TeamType teamType;
-        public int CurrentPoints;
-        [SerializeField] private List<PlayerComponent> Players = new();
+        [FormerlySerializedAs("CurrentPoints")] public int currentPoints;
+        [FormerlySerializedAs("_players")] [SerializeField]private List<PlayerComponent> players = new();
         [SerializeField] private int maxPlayer = 1;
-        [SerializeField] private List<Transform> startingBases;
+        [SerializeField] private List<Transform> startingBases = new();
+
+  
+
+        
 
         public static event Action<TeamType> TeamReady;
 
@@ -21,10 +25,11 @@ namespace Player
         {
             var playerComponent = obj.GetComponent<PlayerComponent>();
 
-            if (playerComponent != null&&!Players.Contains(playerComponent))
+            if ((playerComponent != null)&& (!players.Contains(playerComponent)))
             {
-                Players.Add(playerComponent);
-                var index = Players.Count - 1;
+                players.Add(playerComponent);
+                var index = players.Count - 1;
+                
                 var spriteRenderer = obj.GetComponent<SpriteRenderer>();
                 var playerController = playerComponent.GetComponent<PlayerController>();
                 if (index < startingBases.Count)
@@ -33,20 +38,21 @@ namespace Player
 
                 }
                 
-                Debug.Log($"Player added to team {teamType}. Total players: {Players.Count}");
+                Debug.Log($"Player added to team {teamType}. Total players: {players.Count}");
             }
 
-            if (Players.Count == maxPlayer)
+            if (players.Count == maxPlayer)
             {
                 TeamReady?.Invoke(teamType);
             }
             playerComponent.PlaySpawnAnimation();
         }
+        
 
     
         public void AddPoint()
         {
-            CurrentPoints++;
+            currentPoints++;
         }
     }
 }

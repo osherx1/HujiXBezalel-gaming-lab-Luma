@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6197436832061182120}
   - component: {fileID: 4380858249678673429}
   - component: {fileID: 6668264285641153696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8338103896751413382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Borders (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 7017684943539855457}
   - component: {fileID: 7406474643635358172}
   - component: {fileID: 348144979855633168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cloud Gold Sun Side
   m_TagString: Cloud
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 1726769718186173112}
   - component: {fileID: 4855665126982344381}
   - component: {fileID: 4639689356442054901}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 4258536430210789901}
   - component: {fileID: 5611894331690084858}
   - component: {fileID: 3197650059560111122}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 2062595248123588621}
   - component: {fileID: 1973412623682421860}
   - component: {fileID: 4601127387012850645}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

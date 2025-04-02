@@ -98,18 +98,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlayer: 2
-  startingPoints:
-  - {fileID: 0}
-  - {fileID: 0}
   sunDataSo: {fileID: 11400000, guid: 27d179dff1393914b8a66717f62fbde0, type: 2}
   moonDataSo: {fileID: 11400000, guid: c7756281aca10104da0758c6d3689913, type: 2}
   sunTeam:
-    TeamType: 0
-    Players: []
+    teamType: 0
+    currentPoints: 0
+    players: []
     maxPlayer: 1
+    startingBases: []
   moonTeam:
-    TeamType: 1
-    Players: []
+    teamType: 1
+    currentPoints: 0
+    players: []
     maxPlayer: 1
+    startingBases: []
   startGameDelay: 2
   startGameObject: {fileID: 0}
+  pointsToWin: 3

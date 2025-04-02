@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1461092870833165977}
   - component: {fileID: 4979405860557456257}
   - component: {fileID: 2712016111224317819}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cloud White Moon Side
   m_TagString: Cloud
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 911292430982829816}
   - component: {fileID: 572322894025188378}
   - component: {fileID: 7766935056678401503}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 2421307408164585585}
   - component: {fileID: 3436296304309800640}
   - component: {fileID: 2416052074343807302}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7185551423253753270}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Borders (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 6726459768916677509}
   - component: {fileID: 7017241180492824012}
   - component: {fileID: 3365675593645934198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 1831135382317090770}
   - component: {fileID: 6503953876088181907}
   - component: {fileID: 1226770280286297780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

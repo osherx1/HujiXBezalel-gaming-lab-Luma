@@ -9,8 +9,7 @@ namespace Sky
     /// Should be attached to each player individually.
     /// </summary>
     [RequireComponent(typeof(Transform))]
-    [Serializable]
-    public class CloudTracker
+    [Serializable] public class CloudTracker
     {
         private const int MaxClouds = 5;
         private LinkedList<Transform> _cloudHistory = new LinkedList<Transform>();

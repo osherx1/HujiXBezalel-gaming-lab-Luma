@@ -8,6 +8,8 @@ TagManager:
   - Sky
   - FinishLine
   - Button
+  - FinishLine
+  - Sky
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Cloud
   - 
   - 
   - 

@@ -80,7 +80,7 @@ namespace Player
             if (teamType == TeamType.Moon)
             {
                 moonTeam.AddPoint();
-                if (moonTeam.CurrentPoints == pointsToWin)
+                if (moonTeam.currentPoints == pointsToWin)
                 {
                     print("sun team won!");
                     
@@ -90,7 +90,7 @@ namespace Player
             if (teamType == TeamType.Sun)
             {
                 sunTeam.AddPoint();
-                if (sunTeam.CurrentPoints == pointsToWin)
+                if (sunTeam.currentPoints == pointsToWin)
                 {
                     print("sun team won!");
                     
@@ -158,6 +158,7 @@ namespace Player
 
             if (teamType == TeamType.Sun)
             {
+                //if (sunTeam.) 
                 sunTeam.AddPlayer(obj, dataSo);
             }
             else
