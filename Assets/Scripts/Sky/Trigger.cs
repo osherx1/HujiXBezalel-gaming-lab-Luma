@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using Enums;
-using Player;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,11 +17,11 @@ namespace Sky
         [FormerlySerializedAs("triggerdColor")] [SerializeField] private ColorType triggerdColorType;
         // [SerializeField] public CloudComponent[] associatedClouds;
         public static event Action<ColorType,TeamType> Vanish;
-        private Transform cloudTransform;
+        private Transform _cloudTransform;
         [FormerlySerializedAs("_teamType")] [SerializeField] private TeamType teamType;
         public void SetupCloud(Transform cloudTransform)
         {
-            this.cloudTransform = cloudTransform;
+            this._cloudTransform = cloudTransform;
         }
         public void SetupTeam(TeamType teamType)
         {
@@ -36,10 +35,10 @@ namespace Sky
     
         private void Update()
         {
-            if (cloudTransform != null)
+            if (_cloudTransform != null)
             {
-                transform.position = new Vector3(cloudTransform.position.x,
-                    cloudTransform.position.y, cloudTransform.position.z - 3);
+                transform.position = new Vector3(_cloudTransform.position.x,
+                    _cloudTransform.position.y, _cloudTransform.position.z - 3);
             }
         }
     
