@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlayer: 2
+  pointCooldown: 10
   sunDataSo: {fileID: 11400000, guid: 27d179dff1393914b8a66717f62fbde0, type: 2}
   moonDataSo: {fileID: 11400000, guid: c7756281aca10104da0758c6d3689913, type: 2}
   sunTeam:

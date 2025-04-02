@@ -14,19 +14,18 @@ namespace Player
     /// </summary>
     public class PlayerController : MonoBehaviour
     {
+        
+        public static event Action<TeamType> TeamGetPoint;
+
         /// <summary>
         /// Movement speed of the player.
         /// </summary>
         [SerializeField] private float speed = 2f;
-
-
-
         [Header("Die Animation")] private SpriteRenderer _spriteRenderer;
         [SerializeField] private float flashDuration = 1f;
         [SerializeField] private float flashInterval = 0.2f;
         [SerializeField] private PlayerAttack playerAttack;
-
-
+        
         [FormerlySerializedAs("_playerParent")] [SerializeField] private Transform playerParent;
 
 
@@ -62,6 +61,12 @@ namespace Player
         private Vector3 _startPosition;
         [SerializeField] private PlayerComponent _playerComponent;
 
+        private bool _inputEnabled = true;
+
+        public void SetInputEnabled(bool enabled)
+        {
+            _inputEnabled = enabled;
+        }
         /// <summary>
         /// Called when the object is initialized.
         /// Grabs a reference to the Rigidbody2D component.
@@ -70,9 +75,6 @@ namespace Player
         {
             _rb = GetComponent<Rigidbody2D>(); 
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            /*
-            SetStartingBase(_startPosition);            
-        */
         }
 
         private void Update()
@@ -163,6 +165,9 @@ namespace Player
             CameraShaker.Instance?.Shake(0.1f, 0.05f); // טלטול מצלמה קטן
             // אפשר גם להוסיף סאונד פה
         }
+        
+        
+        
 
         /*
         /// <summary>
@@ -213,7 +218,6 @@ namespace Player
                 }*/
             
         }
-        public static event Action<TeamType> TeamGetPoint;
 
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -229,11 +233,12 @@ namespace Player
 
             if(other.CompareTag("FinishLine")){
                 Debug.Log("Player get a point!");
-                ResetPlayer();
+                //ResetPlayer();
                 TeamGetPoint?.Invoke(_playerComponent.Data.TeamType);
                 //GameManager.Instance.GameOver();
             }
         }
+        
       
 
         
@@ -254,8 +259,14 @@ namespace Player
         /// </summary>
         void FixedUpdate()
         {
-            _rb.linearVelocity = _moveInput * speed;
-        }
+            if (_inputEnabled)
+            {
+                _rb.linearVelocity = _moveInput * speed;
+            }
+            else
+            {
+                _rb.linearVelocity = Vector2.zero;
+            }        }
 
 
         private void HandlePlayerOnCloud(Collider2D cloudCollider)
@@ -414,8 +425,14 @@ namespace Player
         {
             _isattack = isAttacking;
         }
-   
+
+        public Vector3 GetStartingBase()
+        {
+            return _startPosition;
+        }
     }
+    
+    
 }
 /*
 private void Die()

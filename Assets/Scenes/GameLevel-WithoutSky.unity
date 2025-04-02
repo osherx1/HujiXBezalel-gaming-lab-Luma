@@ -1692,6 +1692,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8449464239401071182, guid: eb21c6ebf1d8042418d46e8be2a10948, type: 3}
   m_PrefabInstance: {fileID: 2084999253}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2084999258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7217371341473258592, guid: eb21c6ebf1d8042418d46e8be2a10948, type: 3}
+  m_PrefabInstance: {fileID: 2084999253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee27484d1914e1cb27e2a64ab8cf334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2121503863 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5147910378681576191, guid: 29eb52c210c34a142bf7dfe7d0a0da38, type: 3}
@@ -1724,6 +1735,14 @@ PrefabInstance:
     - target: {fileID: 7075037006417285632, guid: a19a14c716e58704f86ab54e7d14402d, type: 3}
       propertyPath: moonTeam
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075037006417285632, guid: a19a14c716e58704f86ab54e7d14402d, type: 3}
+      propertyPath: pointArea
+      value: 
+      objectReference: {fileID: 2084999258}
+    - target: {fileID: 7075037006417285632, guid: a19a14c716e58704f86ab54e7d14402d, type: 3}
+      propertyPath: pointCooldown
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7075037006417285632, guid: a19a14c716e58704f86ab54e7d14402d, type: 3}
       propertyPath: startGameDelay

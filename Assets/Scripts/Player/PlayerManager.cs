@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Enums;
+using FinishLine;
+using Managers;
 using Sky;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -47,6 +49,8 @@ namespace Player
 
         [FormerlySerializedAs("_pointsToWin")] [SerializeField]
         private int pointsToWin = 3;
+
+        [SerializeField] private SlotsArea pointArea;
 
 
         /// <summary>
@@ -96,11 +100,11 @@ namespace Player
                 // Check cooldown for moon team
                 if (currentTime - _lastPointTimeMoon < pointCooldown) return;
                 _lastPointTimeMoon = currentTime;
-
+                pointArea.FillNextSlot(teamType);
                 moonTeam.AddPoint();
                 if (moonTeam.GetPoint() >= pointsToWin)
                 {
-                    Debug.Log("Moon team won!");
+                    HandleVictory(teamType);
                 }
             }
 
@@ -109,13 +113,20 @@ namespace Player
                 // Check cooldown for sun team
                 if (currentTime - _lastPointTimeSun < pointCooldown) return;
                 _lastPointTimeSun = currentTime;
-
+                pointArea.FillNextSlot(teamType);
                 sunTeam.AddPoint();
                 if (sunTeam.GetPoint() >= pointsToWin)
                 {
-                    Debug.Log("Sun team won!");
+                    HandleVictory(teamType);
                 }
             }
+        }
+
+        private void HandleVictory(TeamType teamType)
+        {
+            Debug.Log("Victory! " + teamType+ " won!");
+            //
+            GameManager.Instance.GameOver();
         }
 
         /*
