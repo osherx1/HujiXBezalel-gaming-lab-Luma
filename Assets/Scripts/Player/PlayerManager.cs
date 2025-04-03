@@ -28,7 +28,7 @@ namespace Player
         [Tooltip("Cooldown time between allowed point scoring (in seconds).")]
         [SerializeField] private float pointCooldown = 2f;
 
-        [Tooltip("Number of points required for a team to win.")]
+        [Tooltip("Number  of points required for a team to win.")]
         [FormerlySerializedAs("_pointsToWin")]
         [SerializeField] private int pointsToWin = 3;
 
