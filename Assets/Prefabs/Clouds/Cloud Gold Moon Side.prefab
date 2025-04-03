@@ -452,7 +452,7 @@ MonoBehaviour:
   speed: 1
   moveDirection: 0
   color: 1
-  vanishCooldown: 5
+  vanishCooldown: 2.5
   teamType: 1
 --- !u!70 &2963231720241966664
 CapsuleCollider2D:
