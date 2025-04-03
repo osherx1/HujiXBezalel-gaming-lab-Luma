@@ -27,6 +27,12 @@ namespace Player
         /// </summary>
         [SerializeField] private Vector3 baseTeam;
 
+        //TODO - Add after getting the animations from the art - 
+        /*/// <summary>
+        /// Animator controller to assign to the player's Animator.
+        /// </summary>
+        [SerializeField] private RuntimeAnimatorController animatorController;*/
+
         /// <summary>
         /// Gets or sets the base (starting) position for the player.
         /// </summary>

@@ -7,62 +7,67 @@ using UnityEngine.InputSystem;
 namespace Player
 {
     /// <summary>
-    /// Handles individual player configuration, appearance, animations, and base resetting logic.
+    /// Handles player-specific initialization including visuals, team data,
+    /// and runtime animator controller assignment based on the ScriptableObject.
     /// </summary>
     [Serializable]
     public class PlayerComponent : MonoBehaviour
     {
         /// <summary>
-        /// The PlayerInput component used for handling controls.
+        /// Reference to the player's input system.
         /// </summary>
         private PlayerInput _playerInput;
 
         /// <summary>
-        /// ScriptableObject containing this player's team data, color, and icon.
+        /// ScriptableObject containing this player's configuration data.
         /// </summary>
         public PlayerDataSo Data { get; set; }
 
         /// <summary>
-        /// Index number of the player (e.g., player 1, 2, etc.).
+        /// The index or ID of the player (e.g., Player 1, Player 2).
         /// </summary>
         private int _playerNumber;
 
         /// <summary>
-        /// Reference to the PlayerController responsible for movement and actions.
+        /// Reference to the PlayerController handling movement and gameplay logic.
         /// </summary>
         private PlayerController _playerController;
 
         /// <summary>
-        /// The sprite renderer used to display the player's visual.
+        /// Reference to the SpriteRenderer to display the player's icon.
         /// </summary>
         private SpriteRenderer _spriteRenderer;
+        /*
+        /// <summary>
+        /// Animator component responsible for playing animations.
+        /// </summary>*/
+        //TODO - Add after getting The animations from the art - 
+        // private Animator _animator;
 
         /// <summary>
-        /// (Optional) Reference to the player's base platform.
-        /// </summary>
-        private Transform _baseTransform;
-
-        /// <summary>
-        /// Called on game start. Attempts to find required components automatically.
+        /// Called when the object is initialized. Caches required components.
         /// </summary>
         private void Start()
         {
             _playerController = GetComponent<PlayerController>();
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer = GetComponent<SpriteRenderer>(); 
+            //_animator = GetComponent<Animator>();
 
             Debug.Log(_playerController != null ? "PlayerController found!" : "PlayerController not found.");
             Debug.Log(_spriteRenderer != null ? "SpriteRenderer found!" : "SpriteRenderer not found.");
+            //TODO - Add after getting The animations from the art - 
+            //Debug.Log(_animator != null ? "Animator found!" : "Animator not found.");
         }
 
         /// <summary>
-        /// Fully initializes the player with input, data, visuals, and starting location.
+        /// Initializes the player with the given settings and applies visual and animation configuration.
         /// </summary>
-        /// <param name="playerNumber">The player's number (e.g., Player 1, Player 2).</param>
-        /// <param name="data">ScriptableObject containing the player's team data.</param>
-        /// <param name="playerInput">Input object used for controlling the player.</param>
-        /// <param name="startPosition">Initial position to spawn the player at.</param>
-        /// <param name="spriteRenderer">Sprite renderer for visuals.</param>
-        /// <param name="playerController">Reference to the main PlayerController script.</param>
+        /// <param name="playerNumber">The number assigned to the player.</param>
+        /// <param name="data">The ScriptableObject holding team and visual data.</param>
+        /// <param name="playerInput">The PlayerInput component associated with this player.</param>
+        /// <param name="startPosition">The starting position of the player.</param>
+        /// <param name="spriteRenderer">The sprite renderer to apply the icon.</param>
+        /// <param name="playerController">The controller managing movement and actions.</param>
         public void Initialize(int playerNumber, PlayerDataSo data, PlayerInput playerInput, Transform startPosition,
             SpriteRenderer spriteRenderer, PlayerController playerController)
         {
@@ -71,6 +76,8 @@ namespace Player
             _playerInput = playerInput;
             _playerController = playerController;
             _spriteRenderer = spriteRenderer;
+            //TODO - Add after getting The animations from the art - 
+            //_animator = GetComponent<Animator>();
 
             if (_playerController != null)
             {
@@ -78,8 +85,26 @@ namespace Player
                 transform.position = startPosition.position;
             }
 
+            //TODO - Add after getting The animations from the art - 
+            /*
             if (Data != null)
+            {
                 Debug.Log($"Initialized player as {Data.TeamType}.");
+
+                // Set animator controller from ScriptableObject
+                if (_animator != null && Data.AnimatorController != null)
+                {
+                    _animator.runtimeAnimatorController = Data.AnimatorController;
+                }
+            }*/
+            if (_spriteRenderer != null && Data.PlayerIcon != null)
+            {
+                Debug.Log("Changing Sprite Icon.");
+                _spriteRenderer.sprite = Data.PlayerIcon;
+            }
+        
+            
+            
 
             if (_spriteRenderer != null && Data.PlayerIcon != null)
             {
