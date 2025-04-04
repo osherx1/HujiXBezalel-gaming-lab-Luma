@@ -152,7 +152,8 @@ namespace Player
 
         private void HandleTeamReady(TeamType teamType)
         {
-            if (teamType == TeamType.Moon) _moonTeamReady = true;
+            _moonTeamReady = true;
+         //   if (teamType == TeamType.Moon) _moonTeamReady = true;
             if (teamType == TeamType.Sun) _sunTeamReady = true;
 
             if (_moonTeamReady && _sunTeamReady)

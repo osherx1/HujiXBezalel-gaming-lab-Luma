@@ -12,6 +12,8 @@ namespace Managers
         //public static event Action ResetPlayerPlace;
 
 
+        // TODO: he start the start screen wite to the buyyen and then call the player Manager. 
+        // when the player when he calls the game manger and the game manager call the ui manager to holld this.
         public void ResetPlayerPosition()
         {
             //ResetPlayerPlace?.Invoke();
@@ -58,6 +60,11 @@ namespace Managers
 #else
         Application.Quit();
 #endif
+        }
+
+        public void ResetGame()
+        {
+            throw new NotImplementedException();
         }
     }
 }
