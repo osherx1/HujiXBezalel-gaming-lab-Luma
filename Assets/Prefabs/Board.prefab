@@ -15178,7 +15178,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -1116576180549697728, guid: 4dd6417f6c05c894f98a51c0873dec92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -17477,7 +17477,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.15, z: 0}
-  m_LocalScale: {x: 1.5421107, y: 0.11051866, z: 1}
+  m_LocalScale: {x: 0.8551312, y: 0.061284807, z: 0.55452}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8449464239401071182}
@@ -18642,6 +18642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7229629612023096675}
+  - component: {fileID: 5159153838485325997}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -18671,6 +18672,18 @@ Transform:
   - {fileID: 3496668139737097044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5159153838485325997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869830583668693947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37b4784d1bc4125802ea145faa90ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8878702844892318378
 GameObject:
   m_ObjectHideFlags: 0
