@@ -24,6 +24,7 @@ namespace Player
 
 
         public static event Action<TeamType> TeamReady;
+        public static event Action<string> TheWinner;
 
         public void AddPlayer(PlayerInput obj, PlayerDataSo dataSo)
         {
@@ -63,6 +64,10 @@ namespace Player
         {
             Debug.Log("Team " + teamType + " get point");
             currentPoints++;
+            if (currentPoints == 3)
+            {
+                TheWinner?.Invoke(teamType.ToString());
+            }
             ReturnAllPlayersToBase();
         }
 
