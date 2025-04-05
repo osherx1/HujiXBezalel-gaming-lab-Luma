@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 243336964679340596}
   - component: {fileID: 4683384675244954818}
   - component: {fileID: 4768296725962526944}
-  - component: {fileID: 7379402366541446}
+  - component: {fileID: 7612179925760518145}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ebbbac366c44bbbc0430ae74a9525c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &7379402366541446
+--- !u!95 &7612179925760518145
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ Animator:
   m_GameObject: {fileID: 541135032893517789}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 23c1919a5419c438c93fefd7f5cf699e, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
