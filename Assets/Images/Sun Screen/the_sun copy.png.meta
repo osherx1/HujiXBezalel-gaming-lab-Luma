@@ -142,306 +142,20 @@ TextureImporter:
       name: the_sun copy_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 267
-        width: 79
-        height: 196
+        x: 0
+        y: 0
+        width: 1280
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b800cc802f95afe10800000000000000
-      internalID: 2232195461380046987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_1
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 266
-        width: 81
-        height: 197
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: be85ff2d00f71d650800000000000000
-      internalID: 6255920998911006955
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_2
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 266
-        width: 67
-        height: 197
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8ca4dde1c12a3e560800000000000000
-      internalID: 7341890059204643528
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_3
-      rect:
-        serializedVersion: 2
-        x: 316
-        y: 265
-        width: 59
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3d4cd7b51e37d51c0800000000000000
-      internalID: -4513323839815564077
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_4
-      rect:
-        serializedVersion: 2
-        x: 379
-        y: 265
-        width: 78
-        height: 198
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0dc59581afe8a6af0800000000000000
-      internalID: -402352011894760240
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_5
-      rect:
-        serializedVersion: 2
-        x: 463
-        y: 267
-        width: 80
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b4b11781217001b90800000000000000
-      internalID: -7273305623902479541
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_6
-      rect:
-        serializedVersion: 2
-        x: 605
-        y: 267
-        width: 76
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c12ea819f443f8290800000000000000
-      internalID: -7886026906153590244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_7
-      rect:
-        serializedVersion: 2
-        x: 685
-        y: 267
-        width: 83
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c060d95a077d0c060800000000000000
-      internalID: 6971809101984368140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_8
-      rect:
-        serializedVersion: 2
-        x: 772
-        y: 265
-        width: 57
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9d434a248af52030800000000000000
-      internalID: 3469454533510516126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_9
-      rect:
-        serializedVersion: 2
-        x: 889
-        y: 267
-        width: 80
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 031f4c45b7c228a20800000000000000
-      internalID: 3063059604780151088
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_10
-      rect:
-        serializedVersion: 2
-        x: 971
-        y: 267
-        width: 42
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c1d7fd4c493b5a10800000000000000
-      internalID: 1899174667755180489
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_11
-      rect:
-        serializedVersion: 2
-        x: 1018
-        y: 265
-        width: 59
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b3c7552e28ff16320800000000000000
-      internalID: 2549599801676495931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_12
-      rect:
-        serializedVersion: 2
-        x: 1081
-        y: 267
-        width: 67
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a8423027eef1d17b0800000000000000
-      internalID: -5252006481468644214
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the_sun copy_13
-      rect:
-        serializedVersion: 2
-        x: 1151
-        y: 267
-        width: 83
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c1cce947a51bdc640800000000000000
-      internalID: 5101928954942376988
+      spriteID: 62c3d5c9dd72be244bec7950f0a7809e
+      internalID: -482231096
       vertices: []
       indices: 
       edges: []
@@ -450,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 19e576aa5430cf9448fc8b6677e2450d
     internalID: 0
     vertices: []
     indices: 
@@ -459,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      the_sun copy_0: -482231096
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
