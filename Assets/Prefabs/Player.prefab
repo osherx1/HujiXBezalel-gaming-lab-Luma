@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 243336964679340596}
   - component: {fileID: 4683384675244954818}
   - component: {fileID: 4768296725962526944}
+  - component: {fileID: 7379402366541446}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -216,7 +217,7 @@ MonoBehaviour:
   _cloudTracker:
     startingBase: {fileID: 0}
   jumpingActionCollider: {fileID: 69768483697430165}
-  _playerComponent: {fileID: 4768296725962526944}
+  playerComponent: {fileID: 4768296725962526944}
 --- !u!50 &7714914081309601506
 Rigidbody2D:
   serializedVersion: 5
@@ -317,6 +318,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ebbbac366c44bbbc0430ae74a9525c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7379402366541446
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541135032893517789}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 23c1919a5419c438c93fefd7f5cf699e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3742557328950537822
 GameObject:
   m_ObjectHideFlags: 0

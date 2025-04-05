@@ -25,6 +25,8 @@ namespace Player
         [SerializeField] private float speed = 2f;
 
         [Header("Die Animation")]
+        
+        //TODO: adding animation.
         private SpriteRenderer _spriteRenderer;
         [SerializeField] private float flashDuration = 1f;
         [SerializeField] private float flashInterval = 0.2f;
