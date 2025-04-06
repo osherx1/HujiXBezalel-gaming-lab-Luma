@@ -4,8 +4,9 @@ using UnityEngine;
 namespace FinishLine
 {
     /// <summary>
-    /// Represents a slot on the finish line that can be filled with a team's color.
+    /// Represents a slot on the finish line that can be filled with a team's image.
     /// </summary>
+    [RequireComponent(typeof(SpriteRenderer))]
     public class FinishSlot : MonoBehaviour
     {
         /// <summary>
@@ -13,26 +14,26 @@ namespace FinishLine
         /// </summary>
         public bool IsFilled { get; private set; } = false;
 
-        // Reference to the Renderer component of the slot
-        private Renderer _renderer;
+        // Reference to the SpriteRenderer component of the slot
+        private SpriteRenderer _spriteRenderer;
 
-        // Color used when the Sun team fills this slot
-        [SerializeField] private Color sunTeamColor = Color.yellow;
+        // Sprite used when the Sun team fills this slot
+        [SerializeField] private Sprite sunTeamSprite;
 
-        // Color used when the Moon team fills this slot
-        [SerializeField] private Color moonTeamColor = Color.blue;
+        // Sprite used when the Moon team fills this slot
+        [SerializeField] private Sprite moonTeamSprite;
 
         /// <summary>
         /// Called when the script instance is being loaded.
-        /// Initializes the Renderer reference.
+        /// Initializes the SpriteRenderer reference.
         /// </summary>
         private void Awake()
         {
-            _renderer = GetComponent<Renderer>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         /// <summary>
-        /// Fills the slot with the color of the specified team.
+        /// Fills the slot with the image of the specified team.
         /// This can only be done once.
         /// </summary>
         /// <param name="teamType">The team that is filling this slot (Sun or Moon).</param>
@@ -41,11 +42,11 @@ namespace FinishLine
             // Prevents multiple fills
             if (IsFilled) return;
 
-            // Choose the color based on the team type
-            Color chosenColor = teamType == TeamType.Sun ? sunTeamColor : moonTeamColor;
+            // Choose the sprite based on the team type
+            Sprite chosenSprite = teamType == TeamType.Sun ? sunTeamSprite : moonTeamSprite;
 
-            // Apply the chosen color to the material
-            _renderer.material.color = chosenColor;
+            // Apply the chosen sprite to the SpriteRenderer
+            _spriteRenderer.sprite = chosenSprite;
 
             // Mark the slot as filled
             IsFilled = true;

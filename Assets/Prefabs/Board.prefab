@@ -15201,7 +15201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9696b83f7b347b59ac1ee6fd8dc746a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunTeamColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  sunTeamColor: {r: 1, g: 0, b: 0.2784314, a: 1}
   moonTeamColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!1 &7211042224085061559
 GameObject:
