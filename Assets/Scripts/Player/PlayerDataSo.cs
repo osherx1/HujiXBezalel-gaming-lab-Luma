@@ -18,6 +18,7 @@ namespace Player
         [SerializeField] private Sprite playerIcon;
 
         /// <summary>
+        /// 
         /// The team that this player belongs to (e.g., Sun or Moon).
         /// </summary>
         [SerializeField] private TeamType teamType;

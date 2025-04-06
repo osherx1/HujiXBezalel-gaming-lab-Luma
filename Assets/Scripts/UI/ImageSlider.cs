@@ -11,7 +11,7 @@ namespace UI
         private void Start()
         {
             // Initially hide all images
-            HideAllImages();
+       //     HideAllImages();
         }
 
         // This method will be called by UIManager to hide all images

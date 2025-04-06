@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Enums;
 using FinishLine;
@@ -59,6 +60,9 @@ namespace Player
 
         #region Internal State
 
+        public static event Action<string> TheWinner;
+        public static event Action RemoveInstructions;
+        
         /// <summary>
         /// Internal list of all joined players.
         /// </summary>
@@ -73,6 +77,7 @@ namespace Player
         private float _lastPointTimeMoon = -Mathf.Infinity;
         private bool _moonTeamReady;
         private bool _sunTeamReady;
+        private int checkedButton;
 
         #endregion
 
@@ -82,7 +87,7 @@ namespace Player
         {
             _playerInputManager = gameObject.GetComponent<PlayerInputManager>();
             _players = new List<PlayerInput>();
-
+            
             if (startGameObject != null)
             {
                 startGameObject.SetActive(false);
@@ -93,13 +98,15 @@ namespace Player
             }
         }
 
+
+  
         private void OnEnable()
         {
             _playerInputManager.onPlayerJoined += AddPlayer;
             Team.TeamReady += HandleTeamReady;
             PlayerController.TeamGetPoint += AddPoint;
         }
-
+        
         private void OnDisable()
         {
             _playerInputManager.onPlayerJoined -= AddPlayer;
@@ -123,9 +130,10 @@ namespace Player
                 pointArea.FillNextSlot(teamType);
                 moonTeam.AddPoint();
 
-                if (moonTeam.GetPoint() >= pointsToWin)
+                if (moonTeam.GetPoint() >= 1)
                 {
-                    HandleVictory(teamType);
+                    
+                    TheWinner?.Invoke("moon");
                 }
             }
 
@@ -137,27 +145,21 @@ namespace Player
                 pointArea.FillNextSlot(teamType);
                 sunTeam.AddPoint();
 
-                if (sunTeam.GetPoint() >= pointsToWin)
+                if (sunTeam.GetPoint() >= 1)
                 {
-                    HandleVictory(teamType);
+                    TheWinner?.Invoke("sun");
                 }
             }
         }
-
-        private void HandleVictory(TeamType teamType)
-        {
-            Debug.Log("Victory! " + teamType + " won!");
-            GameManager.Instance.GameOver();
-        }
-
+        
         private void HandleTeamReady(TeamType teamType)
         {
-            _moonTeamReady = true;
-         //   if (teamType == TeamType.Moon) _moonTeamReady = true;
+            if (teamType == TeamType.Moon) _moonTeamReady = true;
             if (teamType == TeamType.Sun) _sunTeamReady = true;
 
             if (_moonTeamReady && _sunTeamReady)
             {
+                RemoveInstructions?.Invoke();
                 StartCoroutine(StartGameWithDelay());
             }
         }
@@ -186,7 +188,7 @@ namespace Player
 
         #region Player Management
 
-        private void AddPlayer(PlayerInput obj)
+        public void AddPlayer(PlayerInput obj)
         {
             _players.Add(obj);
             int index = _players.Count - 1;
