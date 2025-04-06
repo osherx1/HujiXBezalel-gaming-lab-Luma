@@ -6,7 +6,7 @@ namespace UI
     public class ImageSlider : MonoBehaviour 
     {
         public Image[] images; // Array of images to display public
-        float delayBetweenSlides = 0.5f; // Delay before showing each image
+        float delayBetweenSlides = 0.1f; // Delay before showing each image
      
         private void Start()
         {
