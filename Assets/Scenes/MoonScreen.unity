@@ -494,6 +494,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheStartingMoon
       objectReference: {fileID: 0}
+    - target: {fileID: 7835689148183250875, guid: a07bfcd7374be7449a81acaf98aa8004, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 271fbef22b9cb4ab48dc02ead90d2fc1, type: 2}
     - target: {fileID: 8255202438938541613, guid: a07bfcd7374be7449a81acaf98aa8004, type: 3}
       propertyPath: m_SortingOrder
       value: 5

@@ -77,6 +77,7 @@ namespace Player
         private float _lastPointTimeMoon = -Mathf.Infinity;
         private bool _moonTeamReady;
         private bool _sunTeamReady;
+        private int checkedButton;
 
         #endregion
 
@@ -97,14 +98,15 @@ namespace Player
             }
         }
 
-        
+
+  
         private void OnEnable()
         {
             _playerInputManager.onPlayerJoined += AddPlayer;
             Team.TeamReady += HandleTeamReady;
             PlayerController.TeamGetPoint += AddPoint;
         }
-
+        
         private void OnDisable()
         {
             _playerInputManager.onPlayerJoined -= AddPlayer;
@@ -128,8 +130,9 @@ namespace Player
                 pointArea.FillNextSlot(teamType);
                 moonTeam.AddPoint();
 
-                if (moonTeam.GetPoint() >= pointsToWin)
+                if (moonTeam.GetPoint() >= 1)
                 {
+                    
                     TheWinner?.Invoke("moon");
                 }
             }
@@ -185,7 +188,7 @@ namespace Player
 
         #region Player Management
 
-        private void AddPlayer(PlayerInput obj)
+        public void AddPlayer(PlayerInput obj)
         {
             _players.Add(obj);
             int index = _players.Count - 1;

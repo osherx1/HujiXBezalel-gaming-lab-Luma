@@ -373,8 +373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5756cbc4de94f86b59a1499be12fcfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 1
-  delayBeforeFadeIn: 0.01
 --- !u!4 &1428475093
 Transform:
   m_ObjectHideFlags: 0
@@ -557,6 +555,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7138895989235180852, guid: 579dcc240ac26304b9d1ae6dc3da3045, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 996f1c68c20574f91be06c741cb1d5bd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
