@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e567fbaa774acc975a936f7994e6a7, type: 3}
   m_Name: MoonDataSo
   m_EditorClassIdentifier: 
-  playerIcon: {fileID: 8222805513700328110, guid: e9b1f8703968a7a499497d15bff99ff3, type: 3}
+  playerIcon: {fileID: -522618996, guid: db04157e99a52b24a8ae2504bdad4f4c, type: 3}
   teamType: 1
   animatorController: {fileID: 9100000, guid: 013c60bd789a4490bb152c7e2b7eae4d, type: 2}
   playerName: 

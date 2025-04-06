@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 70538240fbe8a21439351601850367c2
+guid: bf6e1c58e970c274e89b1f024cd4f74f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2532087816333192471
-    second: ring_0
+      213: 605162050437240712
+    second: sun_0
+  - first:
+      213: 2478982479046213345
+    second: sun_1
+  - first:
+      213: -7018185981625310791
+    second: sun_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +106,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ring_0
+      name: sun_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 13
-        width: 273
-        height: 274
+        x: 0
+        y: 0
+        width: 569
+        height: 520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9e29d5feb873cdcd0800000000000000
-      internalID: -2532087816333192471
+      spriteID: 3cbdbbffe3b10fb46978dadebaad0bb6
+      internalID: -777429924
       vertices: []
       indices: 
       edges: []
@@ -125,7 +131,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7d29e97a9cf1ebb489ccec0d8d038aca
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +141,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ring_0: -2532087816333192471
+      sun_0: -777429924
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
