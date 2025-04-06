@@ -86,7 +86,7 @@ namespace Player
         {
             _playerInputManager = gameObject.GetComponent<PlayerInputManager>();
             _players = new List<PlayerInput>();
-
+            
             if (startGameObject != null)
             {
                 startGameObject.SetActive(false);
@@ -148,14 +148,10 @@ namespace Player
                 }
             }
         }
-
-      
-
+        
         private void HandleTeamReady(TeamType teamType)
         {
-            
-            _moonTeamReady = true;
-            //if (teamType == TeamType.Moon) _moonTeamReady = true;
+            if (teamType == TeamType.Moon) _moonTeamReady = true;
             if (teamType == TeamType.Sun) _sunTeamReady = true;
 
             if (_moonTeamReady && _sunTeamReady)

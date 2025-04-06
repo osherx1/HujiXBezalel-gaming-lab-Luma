@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace UI
 {
-    
         public class Restart : MonoBehaviour
         {
             private void Update()
@@ -15,6 +14,5 @@ namespace UI
             }
             
         }
-    
     
 }
