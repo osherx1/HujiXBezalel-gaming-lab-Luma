@@ -3,16 +3,22 @@ using System;
 using UI;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Managers { 
     public class UIManager : MonoBehaviour 
-    { 
-        [SerializeField] private ImageSlider startScreen; 
+    {
+        private static readonly int Happy = Animator.StringToHash("Happy");
+        [SerializeField] private ImageSlider startScreen;
+        [SerializeField] private ImageSlider instructionsScreen;
         [SerializeField] private ImageSlider moonScreen;
         [SerializeField] private ImageSlider sunScreen;
-
+      //  [SerializeField] private Animator sunAnimator;
+      //  [SerializeField] private Animator moonAnimator;
+      //  [SerializeField] private Animator sunAn;
         private void Start()
         {
+         //   sunAn.SetTrigger(Happy);
             StartCoroutine(startScreen.DisplayImages());
         }
 
@@ -23,17 +29,22 @@ namespace Managers {
                 StartCoroutine(startScreen.DisplayImages());
             }
 
+            if (screenName == "instructions")
+            {
+                StartCoroutine(instructionsScreen.DisplayImages());
+            }
+
             if (screenName == "moon")
             {
-                StartCoroutine(moonScreen.DisplayImages());
-
+                SceneManager.LoadScene("MoonScreen");
             }
 
             if (screenName == "sun")
             {
-                StartCoroutine(sunScreen.DisplayImages());
+                SceneManager.LoadScene("SunScreen");
             }
         }
+        
         
 
         public void RemoveScreen(String screenName)
@@ -41,10 +52,10 @@ namespace Managers {
             if (screenName == "start")
             {
                 startScreen.RemoveAllImages();
-               
             }
             else
             {
+                    instructionsScreen.RemoveAllImages();
                    sunScreen.RemoveAllImages();
                    moonScreen.RemoveAllImages();
             }

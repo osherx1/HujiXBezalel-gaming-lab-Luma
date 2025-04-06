@@ -216,6 +216,7 @@ MonoBehaviour:
   jumpTime: 0.2
   _cloudTracker:
     startingBase: {fileID: 0}
+  _animator: {fileID: 0}
   jumpingActionCollider: {fileID: 69768483697430165}
   playerComponent: {fileID: 4768296725962526944}
 --- !u!50 &7714914081309601506
@@ -326,7 +327,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541135032893517789}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0

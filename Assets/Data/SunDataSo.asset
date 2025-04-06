@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIcon: {fileID: -4547134832526077933, guid: 90203925385c58c44920d921d01ffe36, type: 3}
   teamType: 0
-  animatorController: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: 23c1919a5419c438c93fefd7f5cf699e, type: 2}
   playerName: 
   baseTeam: {x: 10.15, y: -0.14, z: 3.54}

@@ -61,7 +61,8 @@ namespace Player
         #region Internal State
 
         public static event Action<string> TheWinner;
-
+        public static event Action RemoveInstructions;
+        
         /// <summary>
         /// Internal list of all joined players.
         /// </summary>
@@ -96,6 +97,7 @@ namespace Player
             }
         }
 
+        
         private void OnEnable()
         {
             _playerInputManager.onPlayerJoined += AddPlayer;
@@ -140,7 +142,7 @@ namespace Player
                 pointArea.FillNextSlot(teamType);
                 sunTeam.AddPoint();
 
-                if (sunTeam.GetPoint() >= pointsToWin)
+                if (sunTeam.GetPoint() >= 1)
                 {
                     TheWinner?.Invoke("sun");
                 }
@@ -151,12 +153,14 @@ namespace Player
 
         private void HandleTeamReady(TeamType teamType)
         {
+            
             _moonTeamReady = true;
-         //   if (teamType == TeamType.Moon) _moonTeamReady = true;
+            //if (teamType == TeamType.Moon) _moonTeamReady = true;
             if (teamType == TeamType.Sun) _sunTeamReady = true;
 
             if (_moonTeamReady && _sunTeamReady)
             {
+                RemoveInstructions?.Invoke();
                 StartCoroutine(StartGameWithDelay());
             }
         }

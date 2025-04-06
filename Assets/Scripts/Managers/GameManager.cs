@@ -4,6 +4,7 @@ using Player;
 using Sky;
 using UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Managers
 {
@@ -15,9 +16,10 @@ namespace Managers
     
         [SerializeField] private UIManager uIManager;
         [SerializeField] private PlayerManager playerManager;
-
+        private bool check = false;
      
         //public static event Action ResetPlayerPlace;
+        private PlayerInputManager _playerInputManager;
 
         private Board _board;
         private void Start()
@@ -30,23 +32,35 @@ namespace Managers
         public void OnStartGameClicked()
         {
             uIManager.RemoveScreen("start");
+            if (check == false)
+            {
+                uIManager.DisplayScreen("instructions"); 
+                check = true;
+            }
+           
             _board.gameObject.SetActive(true);
-        
         }
 
         private void OnEnable()
         {
             //PlayerHealth.OnPlayerDeath -= HandlePlayerDeath;
             PlayerManager.TheWinner += ShowTheWinner;
+            PlayerManager.RemoveInstructions += RemoveInstructions;
         }
-
+        
         private void OnDisable()
         {
             PlayerManager.TheWinner -= ShowTheWinner;
+            PlayerManager.RemoveInstructions -= RemoveInstructions;
+
             //PlayerHealth.OnPlayerDeath -= HandlePlayerDeath;
 
         }
-
+        private void RemoveInstructions()
+        {
+            uIManager.RemoveScreen("instructions");
+        }
+        
         private void ShowTheWinner(string screenName)
         {
             _board.gameObject.SetActive(false);
