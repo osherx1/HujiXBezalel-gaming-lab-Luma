@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using Enums;
+using Managers;
 using Sky;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using AudioType = Enums.AudioType;
 
 namespace Player
 {
@@ -150,6 +152,10 @@ namespace Player
             if (_isJumping) return;
 
             Vector2 target = (Vector2)transform.position + dir * jumpDistance;
+            
+            //TODO - 
+            SoundManager.Instance.PlaySoundByAudioType(AudioType.PlayerJump);
+            
             StartCoroutine(JumpTo(target));
         }
 

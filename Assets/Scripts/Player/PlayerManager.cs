@@ -8,6 +8,8 @@ using Sky;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using Managers;
+using AudioType = Enums.AudioType;
 
 namespace Player
 {
@@ -148,8 +150,16 @@ namespace Player
                 if (sunTeam.GetPoint() >= pointsToWin)
                 {
                     TheWinner?.Invoke("sun");
+                    HandleVictory(teamType);
                 }
             }
+        }
+        
+        private void HandleVictory(TeamType teamType)
+        {
+            SoundManager.Instance.PlaySoundByAudioType(AudioType.VictoryScreen);
+            Debug.Log("Victory! " + teamType + " won!");
+            // GameManager.Instance.GameOver();
         }
         
         private void HandleTeamReady(TeamType teamType)

@@ -3,6 +3,8 @@ using System.Collections;
 using Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Managers;
+using AudioType = Enums.AudioType;
 
 namespace Player
 {
@@ -203,6 +205,7 @@ namespace Player
         {
             if (_playerController != null)
             {
+                SoundManager.Instance.PlaySoundByAudioType(AudioType.GetPoint);
                 StartCoroutine(ReturnToBaseRoutine(_playerController.GetStartingBase()));
             }
         }

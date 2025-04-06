@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using Managers;
 using UnityEngine;
+using AudioType = Enums.AudioType;
 
 namespace Player
 {
@@ -48,6 +50,8 @@ namespace Player
         /// </summary>
         private IEnumerator PerformAttack()
         {
+            //TODO - 
+            SoundManager.Instance.PlaySoundByAudioType(AudioType.PlayerAttack);
             // Set player state to attacking
             playerController.SetIsAttacking(true);
 

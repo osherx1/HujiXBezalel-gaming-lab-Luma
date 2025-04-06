@@ -3,6 +3,8 @@ using System.Collections;
 using Enums;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Managers;
+using AudioType = Enums.AudioType;
 
 namespace Sky
 {
@@ -64,6 +66,7 @@ namespace Sky
             //if (state == 0) return;
 
             state = 0;
+            SoundManager.Instance.PlaySoundByAudioType(AudioType.TriggerActivated);
             Debug.Log("Trigger activated");
             Vanish?.Invoke(triggerdColorType, teamType);
             Debug.Log("Vanish Invoked");

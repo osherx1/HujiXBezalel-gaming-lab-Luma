@@ -14,6 +14,8 @@
         GameOver = 1,
         /// <summary>Sound for victory screen.</summary>
         VictoryScreen = 2,
+        ButtonClick = 3,
+        GetPoint = 4,
 
         // Player-related actions
         /// <summary>Sound for player movement.</summary>
@@ -22,6 +24,7 @@
         PlayerJump = 11,
         /// <summary>Sound for player death.</summary>
         PlayerDie = 12,
-        Trigger=13,
+        PlayerAttack=13,
+        TriggerActivated=14,
     }
 }
