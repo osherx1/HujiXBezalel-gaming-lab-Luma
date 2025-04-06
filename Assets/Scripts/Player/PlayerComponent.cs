@@ -37,6 +37,9 @@ namespace Player
         /// Reference to the SpriteRenderer to display the player's icon.
         /// </summary>
         private SpriteRenderer _spriteRenderer;
+        
+        
+        private Animator _animator;
         /*
         /// <summary>
         /// Animator component responsible for playing animations.
@@ -51,10 +54,16 @@ namespace Player
         {
             _playerController = GetComponent<PlayerController>();
             _spriteRenderer = GetComponent<SpriteRenderer>(); 
-            //_animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
 
             Debug.Log(_playerController != null ? "PlayerController found!" : "PlayerController not found.");
             Debug.Log(_spriteRenderer != null ? "SpriteRenderer found!" : "SpriteRenderer not found.");
+            Debug.Log(_animator != null ? "Animator found!" : "Animator not found.");
+
+            if (Data != null && _animator != null && Data.AnimatorController != null)
+            {
+                _animator.runtimeAnimatorController = Data.AnimatorController;  // ✅ Assign the AnimatorController
+            }
             //TODO - Add after getting The animations from the art - 
             //Debug.Log(_animator != null ? "Animator found!" : "Animator not found.");
         }
@@ -86,17 +95,17 @@ namespace Player
             }
 
             //TODO - Add after getting The animations from the art - 
-            /*
-            if (Data != null)
+            if (Data != null && _animator != null)
             {
                 Debug.Log($"Initialized player as {Data.TeamType}.");
 
-                // Set animator controller from ScriptableObject
-                if (_animator != null && Data.AnimatorController != null)
+                // Ensure the AnimatorController is assigned from the PlayerDataSo
+                if (Data.AnimatorController != null)
                 {
-                    _animator.runtimeAnimatorController = Data.AnimatorController;
+                    _animator.runtimeAnimatorController = Data.AnimatorController;  // ✅ Assign Animator Controller here
                 }
-            }*/
+            }
+
             if (_spriteRenderer != null && Data.PlayerIcon != null)
             {
                 Debug.Log("Changing Sprite Icon.");

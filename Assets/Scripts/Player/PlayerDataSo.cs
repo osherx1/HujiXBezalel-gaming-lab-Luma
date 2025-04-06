@@ -21,12 +21,28 @@ namespace Player
         /// The team that this player belongs to (e.g., Sun or Moon).
         /// </summary>
         [SerializeField] private TeamType teamType;
+        [SerializeField] private RuntimeAnimatorController animatorController; 
 
+        [SerializeField] private string playerName;
         /// <summary>
         /// The default starting position (base) for the player, specific to their team.
         /// </summary>
         [SerializeField] private Vector3 baseTeam;
 
+        
+        /// <summary>
+        /// /
+        /// </summary>
+
+        /// <summary>
+        /// Gets or sets the animator controller.
+        /// </summary>
+        public RuntimeAnimatorController AnimatorController 
+        {
+            get => animatorController;
+            set => animatorController = value;
+        }
+        
         //TODO - Add after getting the animations from the art - 
         /*/// <summary>
         /// Animator controller to assign to the player's Animator.

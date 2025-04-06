@@ -24,7 +24,10 @@ namespace Player
 
 
         public static event Action<TeamType> TeamReady;
+        public static event Action<string> TheWinner;
 
+        
+        
         public void AddPlayer(PlayerInput obj, PlayerDataSo dataSo)
         {
             var playerComponent = obj.GetComponent<PlayerComponent>();
@@ -59,10 +62,15 @@ namespace Player
         }
 
 
+        //check the winning case.
         public void AddPoint()
         {
             Debug.Log("Team " + teamType + " get point");
             currentPoints++;
+            if (currentPoints == 3)
+            {
+                TheWinner?.Invoke(teamType.ToString());
+            }
             ReturnAllPlayersToBase();
         }
 

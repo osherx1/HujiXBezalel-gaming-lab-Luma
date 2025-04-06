@@ -22,5 +22,6 @@
         PlayerJump = 11,
         /// <summary>Sound for player death.</summary>
         PlayerDie = 12,
+        Trigger=13,
     }
 }

@@ -51,13 +51,13 @@ namespace Sky
                 new Vector2(0.04f,-1.11f),new Vector2(0.04f,-2.38f)
             };
         }
-        private void Awake()
-        {
-            SetCloudLocations();
-            Creat();
-            CreatClouds();
-            CreatTriggers();
-        }
+       // private void Awake()
+        //{
+          //  SetCloudLocations();
+          //  Creat();
+          //  CreatClouds();
+           // CreatTriggers();
+        //}
 
         private void Creat()
         {

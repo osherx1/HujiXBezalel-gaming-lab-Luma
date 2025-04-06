@@ -1,4 +1,8 @@
 using System;
+using Enums;
+using Player;
+using Sky;
+using UI;
 using UnityEngine;
 
 namespace Managers
@@ -6,40 +10,57 @@ namespace Managers
     public class GameManager : MonoSingleton<GameManager>
     {
         
-        [SerializeField] private Vector3 playerOneStartPosition;
-        [SerializeField] private Vector3 playerTwoStartPosition;
+        //[SerializeField] private Vector3 playerOneStartPosition;
+      //  [SerializeField] private Vector3 playerTwoStartPosition;
     
+        [SerializeField] private UIManager uIManager;
+        [SerializeField] private PlayerManager playerManager;
+
+     
         //public static event Action ResetPlayerPlace;
 
-
-        public void ResetPlayerPosition()
+        private Board _board;
+        private void Start()
         {
-            //ResetPlayerPlace?.Invoke();
-
+            _board = GameObject.Find("Board").GetComponent<Board>();//
+            _board.gameObject.SetActive(false);//
+            uIManager.DisplayScreen("startScreen"); 
         }
-
-
-
-    
-        public void RestartGame()
+        
+        public void OnStartGameClicked()
         {
-            throw new NotImplementedException();
+            uIManager.RemoveScreen("start");
+            _board.gameObject.SetActive(true);
+        
         }
-
 
         private void OnEnable()
         {
             //PlayerHealth.OnPlayerDeath -= HandlePlayerDeath;
-
+            Team.TheWinner += ShowTheWinner;
         }
-
 
         private void OnDisable()
         {
+            Team.TheWinner -= ShowTheWinner;
             //PlayerHealth.OnPlayerDeath -= HandlePlayerDeath;
 
         }
 
+        private void ShowTheWinner(string screenName)
+        {
+            _board.gameObject.SetActive(false);
+            uIManager.DisplayScreen(screenName);
+        }
+
+        public void ResetGame()
+        {
+            uIManager.Restart();
+            _board.gameObject.SetActive(true);/////////////////
+        }
+        
+        
+        
         private void HandlePlayerDeath()
         {
             throw new NotImplementedException();
@@ -48,6 +69,7 @@ namespace Managers
 
         public void GameOver()
         {
+            uIManager.Quit();
             QuitGame();
         }
     
@@ -58,6 +80,13 @@ namespace Managers
 #else
         Application.Quit();
 #endif
+        }
+        
+        
+        public void ResetPlayerPosition()
+        {
+            //ResetPlayerPlace?.Invoke();
+
         }
     }
 }

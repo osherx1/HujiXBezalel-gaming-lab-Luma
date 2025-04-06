@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 1
   vanishCooldown: 5
-  triggerdColorType: 0
+  triggerdColorType: 2
   teamType: 0
 --- !u!58 &-1955406474627598508
 CircleCollider2D:
