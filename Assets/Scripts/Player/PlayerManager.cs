@@ -130,9 +130,9 @@ namespace Player
                 pointArea.FillNextSlot(teamType);
                 moonTeam.AddPoint();
 
-                if (moonTeam.GetPoint() >= 1)
+                if (moonTeam.GetPoint() >= pointsToWin)
                 {
-                    
+                    print(pointsToWin);
                     TheWinner?.Invoke("moon");
                 }
             }
@@ -145,7 +145,7 @@ namespace Player
                 pointArea.FillNextSlot(teamType);
                 sunTeam.AddPoint();
 
-                if (sunTeam.GetPoint() >= 1)
+                if (sunTeam.GetPoint() >= pointsToWin)
                 {
                     TheWinner?.Invoke("sun");
                 }
