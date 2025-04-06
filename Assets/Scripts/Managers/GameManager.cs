@@ -37,12 +37,12 @@ namespace Managers
         private void OnEnable()
         {
             //PlayerHealth.OnPlayerDeath -= HandlePlayerDeath;
-            Team.TheWinner += ShowTheWinner;
+            PlayerManager.TheWinner += ShowTheWinner;
         }
 
         private void OnDisable()
         {
-            Team.TheWinner -= ShowTheWinner;
+            PlayerManager.TheWinner -= ShowTheWinner;
             //PlayerHealth.OnPlayerDeath -= HandlePlayerDeath;
 
         }

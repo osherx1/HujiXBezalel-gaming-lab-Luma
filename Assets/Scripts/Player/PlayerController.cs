@@ -214,6 +214,8 @@ namespace Player
 
                 // Trigger Happy Animation for collecting a point
                 PlayHappyAnimation();
+                
+                
             }
         }
 

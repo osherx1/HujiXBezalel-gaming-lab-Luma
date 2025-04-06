@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Enums;
 using FinishLine;
@@ -58,6 +59,8 @@ namespace Player
         #endregion
 
         #region Internal State
+
+        public static event Action<string> TheWinner;
 
         /// <summary>
         /// Internal list of all joined players.
@@ -125,7 +128,7 @@ namespace Player
 
                 if (moonTeam.GetPoint() >= pointsToWin)
                 {
-                    HandleVictory(teamType);
+                    TheWinner?.Invoke("moon");
                 }
             }
 
@@ -139,16 +142,12 @@ namespace Player
 
                 if (sunTeam.GetPoint() >= pointsToWin)
                 {
-                    HandleVictory(teamType);
+                    TheWinner?.Invoke("sun");
                 }
             }
         }
 
-        private void HandleVictory(TeamType teamType)
-        {
-            Debug.Log("Victory! " + teamType + " won!");
-            GameManager.Instance.GameOver();
-        }
+      
 
         private void HandleTeamReady(TeamType teamType)
         {
