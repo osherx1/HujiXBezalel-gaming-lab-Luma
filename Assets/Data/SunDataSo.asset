@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e567fbaa774acc975a936f7994e6a7, type: 3}
   m_Name: SunDataSo
   m_EditorClassIdentifier: 
-  playerIcon: {fileID: -777429924, guid: bf6e1c58e970c274e89b1f024cd4f74f, type: 3}
+  playerIcon: {fileID: -290043248, guid: 46c9371e5600e0a45a210a2420a6aba5, type: 3}
   teamType: 0
   animatorController: {fileID: 9100000, guid: 23c1919a5419c438c93fefd7f5cf699e, type: 2}
   playerName: 

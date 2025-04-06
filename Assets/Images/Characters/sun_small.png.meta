@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: db04157e99a52b24a8ae2504bdad4f4c
+guid: 46c9371e5600e0a45a210a2420a6aba5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9083969447635318612
-    second: moon_0
+      213: 7675424623151752325
+    second: sun_small_0
   - first:
-      213: -5679657590885005731
-    second: moon_1
+      213: -2219320896898701471
+    second: sun_small_1
   - first:
-      213: -1825352000054201894
-    second: moon_2
+      213: 395699932093695686
+    second: sun_small_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moon_0
+      name: sun_small_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 625
-        height: 520
+        width: 469
+        height: 498
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,8 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0808f2be6c985a468dc37ab3e9e3b93
-      internalID: -522618996
+      spriteID: dfb3cf0e4fb53bf42adad9f0ff7bb507
+      internalID: -290043248
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2c32deb70fdae524fa72ee3bb2e51b8e
+    spriteID: 6c817fed3a714a74fb66dfeb0c7126fc
     internalID: 0
     vertices: []
     indices: 
@@ -141,7 +141,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      moon_0: -522618996
+      sun_small_0: -290043248
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
