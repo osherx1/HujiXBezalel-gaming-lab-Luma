@@ -17,6 +17,8 @@ namespace Player
         private static readonly int Happy = Animator.StringToHash("Happy");
         private static readonly int Sad = Animator.StringToHash("Sad");
         private static readonly int Surprised = Animator.StringToHash("Surprised");
+        [SerializeField] private Animator sunAnimator;
+        [SerializeField] private Animator moonAnimator;
 
         /// <summary>
         /// Invoked when the player reaches the finish line to notify the game.
@@ -29,9 +31,10 @@ namespace Player
         [SerializeField] private float speed = 2f;
 
         [Header("Die Animation")]
-        
+
         //TODO: adding animation.
         private SpriteRenderer _spriteRenderer;
+
         [SerializeField] private float flashDuration = 1f;
         [SerializeField] private float flashInterval = 0.2f;
 
@@ -43,8 +46,8 @@ namespace Player
         /// <summary>
         /// Parent object to reset to upon death.
         /// </summary>
-        [FormerlySerializedAs("_playerParent")]
-        [SerializeField] private Transform playerParent;
+        [FormerlySerializedAs("_playerParent")] [SerializeField]
+        private Transform playerParent;
 
         /// <summary>
         /// Distance the player jumps per action.
@@ -62,7 +65,6 @@ namespace Player
         private Vector2 _moveInput;
         private Vector2 _directionToMove = Vector2.zero;
         private Rigidbody2D _rb;
-        [SerializeField]private Animator _animator;
 
         private bool _isJumping;
         private bool _isDie;
@@ -70,13 +72,15 @@ namespace Player
         private bool _isOnCloud = true;
         private bool _inputEnabled = true;
 
+
         /// <summary>
         /// Collider used during jumps to prevent unwanted triggers.
         /// </summary>
-        [FormerlySerializedAs("_collider")]
-        [SerializeField] private Collider2D jumpingActionCollider;
+        [FormerlySerializedAs("_collider")] [SerializeField]
+        private Collider2D jumpingActionCollider;
 
-        [FormerlySerializedAs("_playerComponent")] [SerializeField] private PlayerComponent playerComponent;
+        [FormerlySerializedAs("_playerComponent")] [SerializeField]
+        private PlayerComponent playerComponent;
 
         private Vector3 _startPosition;
 
@@ -89,12 +93,6 @@ namespace Player
         {
             _rb = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-           _animator = GetComponent<Animator>();
-
-            if (playerComponent != null && playerComponent.Data != null)
-            {
-                _animator.runtimeAnimatorController = playerComponent.Data.AnimatorController;
-            }
         }
 
         private void Update()
@@ -211,11 +209,20 @@ namespace Player
             {
                 Debug.Log("Player get a point!");
                 TeamGetPoint?.Invoke(playerComponent.Data.TeamType);
+                if (playerComponent.Data.TeamType == TeamType.Sun)
+                {
+                    Debug.Log("Sun player reached the finish line. Moon is sad, Sun is happy.");
 
-                // Trigger Happy Animation for collecting a point
-                PlayHappyAnimation();
-                
-                
+                    sunAnimator.SetTrigger(Happy);
+                    moonAnimator.SetTrigger(Sad);
+                }
+                else if (playerComponent.Data.TeamType == TeamType.Moon)
+                {
+                    Debug.Log("Moon player reached the finish line. Sun is sad, Moon is happy.");
+
+                    moonAnimator.SetTrigger(Happy);
+                    sunAnimator.SetTrigger(Sad);
+                }
             }
         }
 
@@ -267,13 +274,28 @@ namespace Player
         /// </summary>
         private void Die()
         {
-            PlaySurprisedAnimation();
-            //Transform t = _cloudTracker.PeekLastCloud();
+
+            if (playerComponent.Data.TeamType == TeamType.Sun)
+            {
+                Debug.Log("Sun player died! Triggering animations.");
+
+                // Sun player dies, trigger Happy animation for Moon and Surprised for Sun
+                moonAnimator.SetTrigger(Happy);
+                sunAnimator.SetTrigger(Surprised);
+            }
+            else if (playerComponent.Data.TeamType == TeamType.Moon)
+            {
+                Debug.Log("Moon player died! Triggering animations.");
+
+                // Moon player dies, trigger Happy animation for Sun and Surprised for Moon
+                sunAnimator.SetTrigger(Happy);
+                moonAnimator.SetTrigger(Surprised);
+            }
+
             StartCoroutine(HandleDeathSequence());
         }
-        
 
-        /// <summary>
+/// <summary>
         /// Coroutine to handle the reset process after dying.
         /// </summary>
         private IEnumerator HandleDeathSequence()
@@ -330,21 +352,6 @@ namespace Player
         public Vector3 GetStartingBase()
         {
             return _startPosition;
-        }
-        
-        public void PlayHappyAnimation()
-        {
-            _animator?.SetTrigger(Happy);
-        }
-
-        public void PlaySadAnimation()
-        {
-            _animator?.SetTrigger(Sad);
-        }
-
-        public void PlaySurprisedAnimation()
-        {
-            _animator?.SetTrigger(Surprised);
         }
         
     }
