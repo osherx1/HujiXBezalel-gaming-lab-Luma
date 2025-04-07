@@ -1,9 +1,11 @@
-﻿using Managers;
+﻿
+using Managers;
 using System;
+using System.Collections;
 using UI;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Managers { 
     public class UIManager : MonoBehaviour 
@@ -13,7 +15,10 @@ namespace Managers {
         [SerializeField] private ImageSlider instructionsScreen;
         [SerializeField] private ImageSlider moonScreen;
         [SerializeField] private ImageSlider sunScreen;
-      //  [SerializeField] private Animator sunAnimator;
+        [SerializeField] private float fadeDuration = 0.01f;
+        [SerializeField] private Image fadeImage;  // A fullscreen Image component instead of CanvasGroup
+
+        //  [SerializeField] private Animator sunAnimator;
       //  [SerializeField] private Animator moonAnimator;
       //  [SerializeField] private Animator sunAn;
         private void Start()
@@ -33,20 +38,58 @@ namespace Managers {
             {
                 StartCoroutine(instructionsScreen.DisplayImages());
             }
-
-            if (screenName == "moon")
+            else if (screenName == "moon")
             {
-                SceneManager.LoadScene("MoonScreen");
+                StartCoroutine(LoadSceneWithFade("MoonScreen"));
             }
-
-            if (screenName == "sun")
+            else if (screenName == "sun")
             {
-                SceneManager.LoadScene("SunScreen");
+                StartCoroutine(LoadSceneWithFade("SunScreen"));
             }
         }
-        
-        
 
+        private IEnumerator LoadSceneWithFade(string sceneName)
+        {
+            if (fadeImage != null)
+            {
+                yield return StartCoroutine(FadeOut());  // Fade out before changing scenes
+            }
+
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        }
+
+        private IEnumerator FadeIn()
+        {
+            float elapsedTime = 0f;
+            Color imageColor = fadeImage.color;
+
+            while (elapsedTime < fadeDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                imageColor.a = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+                fadeImage.color = imageColor;
+                yield return null;
+            }
+
+            fadeImage.color = new Color(0f, 0f, 0f, 0f); // Fully transparent at the end
+        }
+
+        private IEnumerator FadeOut()
+        {
+            float elapsedTime = 0f;
+            Color imageColor = fadeImage.color;
+
+            while (elapsedTime < fadeDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                imageColor.a = Mathf.Lerp(0f, 1f, elapsedTime / fadeDuration);
+                fadeImage.color = imageColor;
+                yield return null;
+            }
+
+            fadeImage.color = new Color(0f, 0f, 0f, 1f); // Fully opaque at the end
+        }
+    
         public void RemoveScreen(String screenName)
         {
             if (screenName == "start")
